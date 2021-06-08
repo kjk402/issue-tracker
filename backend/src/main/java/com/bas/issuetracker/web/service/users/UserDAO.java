@@ -50,7 +50,7 @@ public class UserDAO implements UserRepository {
                 .addValue("authenticated_by", oAuthAuthenticater.name())
                 .addValue("oauth_id", oauthId);
         try {
-            User user = jdbcTemplate.queryForObject(FIND_USER_BY_ID, mapSqlParameterSource, userMapper);
+            User user = jdbcTemplate.queryForObject(FIND_USER_BY_AUTHENTICATED_BY_AND_OAUTH_ID, mapSqlParameterSource, userMapper);
             return Optional.ofNullable(user);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -63,5 +63,17 @@ public class UserDAO implements UserRepository {
                 .addValue("id", id)
                 .addValue("access_token", newToken);
         jdbcTemplate.update(UPDATE_TOKEN, mapSqlParameterSource);
+    }
+
+    @Override
+    public Optional<User> findUserById(int userId) {
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
+                .addValue("id", userId);
+        try {
+            User user = jdbcTemplate.queryForObject(FIND_USER_BY_ID, mapSqlParameterSource, userMapper);
+            return Optional.ofNullable(user);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }

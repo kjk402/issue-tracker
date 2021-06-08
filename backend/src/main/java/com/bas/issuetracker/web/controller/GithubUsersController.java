@@ -54,7 +54,7 @@ public class GithubUsersController {
     }
 
     @GetMapping("/test")
-    public UserWithToken testTokenCheck(@CertifiedUser int userId) {
-        userService
+    public User testTokenCheck(@CertifiedUser int userId) {
+        return userService.findUserById(userId);
     }
 }
