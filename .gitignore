@@ -1,6 +1,1 @@
 .idea
-
-# secret.prooerties
-/backend/src/main/resources/application-secret.properties
-backend/src/main/resources/dev_secret.properties
-backend/src/main/resources/secret.properties

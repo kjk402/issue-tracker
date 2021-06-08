@@ -196,3 +196,7 @@ $RECYCLE.BIN/
 
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,intellij,java
+# secret.prooerties
+/src/main/resources/application-secret.properties
+/src/main/resources/dev_secret.properties
+/src/main/resources/secret.properties
