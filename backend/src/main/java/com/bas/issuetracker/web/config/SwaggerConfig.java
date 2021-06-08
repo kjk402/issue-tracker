@@ -20,7 +20,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         ApiInfo apiInfo = new ApiInfoBuilder()
-                .title("Airbnb API")
+                .title("Issue-Tracker API")
                 .description("Spring API made by Bat and Nas")
                 .license("Apache License Version 2.0")
                 .version("0.1")

@@ -9,7 +9,11 @@ import com.bas.issuetracker.web.dto.UserWithToken;
 import com.bas.issuetracker.web.service.oauth.OAuthDataService;
 import com.bas.issuetracker.web.service.oauth.OauthApiRequester;
 import com.bas.issuetracker.web.service.users.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
+@Api(tags = {"Issue-Tracker API"})
 @RequestMapping("/users/github")
 @RestController
 public class GithubUsersController {
@@ -44,7 +49,8 @@ public class GithubUsersController {
     }
 
     @GetMapping("/callback")
-    public UserWithToken githubCallback(@RequestParam(value = "code") String code,
+    @ApiOperation(value = "OAuth callback", notes = "OAuth 로그인 플로우의 콜백을 처리합니다.")
+    public UserWithToken githubCallback(@ApiParam(value = "OAuth code") @RequestParam(value = "code") String code,
                                         @UserAgent UserAgentEnum userAgent) {
         String clientId = oAuthSecret.clientId(userAgent);
         String clientSecret = oAuthSecret.clientSecret(userAgent);
@@ -52,4 +58,5 @@ public class GithubUsersController {
         User user = githubApiRequester.profile(githubAccessToken);
         return userService.processLogin(user);
     }
+
 }
