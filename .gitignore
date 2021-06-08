@@ -1,0 +1,4 @@
+.idea
+
+# secret.prooerties
+/backend/src/main/resources/application-secret.properties
