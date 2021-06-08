@@ -1,4 +1,4 @@
-package com.bas.issuetracker.config;
+package com.bas.issuetracker.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
