@@ -1,0 +1,14 @@
+CREATE user 'bas'@'%' IDENTIFIED BY 'bas1234';
+GRANT ALL PRIVILEGES ON *.* TO 'bas'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+ALTER DATABASE issue_tracker DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE issue_tracker.issue (
+    title VARCHAR(45) PRIMARY KEY
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="Any airbnb";
+
+
+
+
+
