@@ -1,4 +1,4 @@
-package com.bas.issuetracker.config.properties;
+package com.bas.issuetracker.web.config.properties;
 
 import com.bas.issuetracker.web.domain.user.UserAgentEnum;
 import org.junit.jupiter.api.DisplayName;
