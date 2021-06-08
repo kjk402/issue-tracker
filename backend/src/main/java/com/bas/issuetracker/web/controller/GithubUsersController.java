@@ -52,9 +52,4 @@ public class GithubUsersController {
         User user = githubApiRequester.profile(githubAccessToken);
         return userService.processLogin(user);
     }
-
-    @GetMapping("/test")
-    public User testTokenCheck(@CertifiedUser int userId) {
-        return userService.findUserById(userId);
-    }
 }
