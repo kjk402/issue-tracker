@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZoneId;
 
 @Service
 public class MilestoneMapper implements RowMapper<Milestone> {

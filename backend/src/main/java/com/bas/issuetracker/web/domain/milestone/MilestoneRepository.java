@@ -6,4 +6,6 @@ public interface MilestoneRepository {
     Milestone save(Milestone milestone);
 
     Optional<Milestone> findById(int id);
+
+    void update(Milestone milestone);
 }

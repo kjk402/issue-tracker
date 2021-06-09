@@ -1,6 +1,6 @@
 package com.bas.issuetracker.web.domain.milestone;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.bas.issuetracker.web.dto.MilestoneMetadata;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,13 +13,18 @@ public class Milestone {
     private int id;
     private String title;
     private String description;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime lastModifiedDateTime;
     private LocalDate dueToDate;
     private boolean isOpen;
 
     public void updateId(int id) {
         this.id = id;
+    }
+
+    public void updateMetadata(MilestoneMetadata metadata) {
+        this.title = metadata.getTitle();
+        this.description = metadata.getDescription();
+        this.dueToDate = metadata.getDueToDate();
     }
 
     public void open() {
