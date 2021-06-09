@@ -35,7 +35,8 @@ public class MilestoneDAO implements MilestoneRepository {
                 .addValue("title", milestone.getTitle())
                 .addValue("description", milestone.getDescription())
                 .addValue("last_modified_date_time", milestone.getLastModifiedDateTime())
-                .addValue("due_to_date", milestone.getDueToDate());
+                .addValue("due_to_date", milestone.getDueToDate())
+                .addValue("is_open", milestone.isOpen());
         jdbcTemplate.update(SAVE_MILESTONE, mapSqlParameterSource, keyHolder);
         milestone.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return milestone;

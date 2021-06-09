@@ -19,6 +19,7 @@ public class MilestoneMapper implements RowMapper<Milestone> {
                 .description(rs.getString("description"))
                 .lastModifiedDateTime(rs.getTimestamp("last_modified_date_time").toLocalDateTime())
                 .dueToDate(rs.getTimestamp("due_to_date").toLocalDateTime().toLocalDate())
+                .isOpen(rs.getBoolean("is_open"))
                 .build();
     }
 }

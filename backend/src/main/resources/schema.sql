@@ -1,9 +1,9 @@
-DROP SCHEMA IF EXISTS `issue_tracker` ;
+DROP SCHEMA IF EXISTS `issue_tracker`;
 -- -----------------------------------------------------
 -- Schema issue_tracker
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `issue_tracker` DEFAULT CHARACTER SET utf8 ;
-USE `issue_tracker` ;
+CREATE SCHEMA IF NOT EXISTS `issue_tracker` DEFAULT CHARACTER SET utf8;
+USE `issue_tracker`;
 
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `milestone`;
@@ -30,7 +30,8 @@ create table `milestone`
     title                   varchar(50),
     description             varchar(300),
     last_modified_date_time timestamp,
-    due_to_date             DATE
+    due_to_date             DATE,
+    is_open                 BOOLEAN
 );
 
 create table `issue`

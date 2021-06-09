@@ -16,8 +16,17 @@ public class Milestone {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime lastModifiedDateTime;
     private LocalDate dueToDate;
+    private boolean isOpen;
 
     public void updateId(int id) {
         this.id = id;
+    }
+
+    public void open() {
+        this.isOpen = true;
+    }
+
+    public void close() {
+        this.isOpen = false;
     }
 }

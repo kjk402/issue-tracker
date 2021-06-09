@@ -30,6 +30,7 @@ class MilestoneServiceTest {
                 .title("milestone title")
                 .dueToDate(LocalDate.of(2021, 6, 1))
                 .lastModifiedDateTime(LocalDateTime.of(2021, 6, 1, 12, 12))
+                .isOpen(true)
                 .build();
         milestoneService.saveMilestone(milestone);
         Milestone foundMilestone = milestoneService.findMilestone(milestone.getId());
@@ -40,7 +41,8 @@ class MilestoneServiceTest {
                         Milestone::getTitle,
                         Milestone::getDescription,
                         Milestone::getLastModifiedDateTime,
-                        Milestone::getDueToDate
+                        Milestone::getDueToDate,
+                        Milestone::isOpen
                 )
                 .doesNotContainNull()
                 .containsExactly(
@@ -48,7 +50,8 @@ class MilestoneServiceTest {
                         foundMilestone.getTitle(),
                         foundMilestone.getDescription(),
                         foundMilestone.getLastModifiedDateTime(),
-                        foundMilestone.getDueToDate()
+                        foundMilestone.getDueToDate(),
+                        foundMilestone.isOpen()
                 );
     }
 }
