@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var loginProviderStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
