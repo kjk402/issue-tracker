@@ -60,11 +60,19 @@
 				E44066BC266F2479007C8753 /* SceneDelegate.swift */,
 				E44066BE266F2479007C8753 /* LoginViewController.swift */,
 				E44066C0266F2479007C8753 /* Main.storyboard */,
+				E4C4E002267099860039807B /* Supporting Files */,
+			);
+			path = IssueTrackerApp;
+			sourceTree = "<group>";
+		};
+		E4C4E002267099860039807B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				E44066C3266F247B007C8753 /* Assets.xcassets */,
 				E44066C5266F247B007C8753 /* LaunchScreen.storyboard */,
 				E44066C8266F247B007C8753 /* Info.plist */,
 			);
-			path = IssueTrackerApp;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +317,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = IssueTrackerApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/IssueTrackerApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,7 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = IssueTrackerApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/IssueTrackerApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
