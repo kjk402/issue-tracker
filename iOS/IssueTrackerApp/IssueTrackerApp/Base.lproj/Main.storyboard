@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B4g-PU-v45">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -170,10 +170,97 @@
             </objects>
             <point key="canvasLocation" x="2.8985507246376816" y="88.392857142857139"/>
         </scene>
+        <!--이슈-->
+        <scene sceneID="fmP-dO-1j7">
+            <objects>
+                <viewController id="i1n-hd-Lmi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hBS-oJ-0wz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bxt-1y-3Vj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="이슈" image="exclamationmark.circle" catalog="system" id="5dW-TS-h8R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNa-R8-wJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2186.9565217391305" y="88.392857142857139"/>
+        </scene>
+        <!--레이블-->
+        <scene sceneID="Y8H-9f-7N4">
+            <objects>
+                <viewController id="C81-Cb-FkU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oku-dC-RoR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mKd-gv-UYI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="레이블" image="tag" catalog="system" id="KRn-Xr-knm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5TT-aT-9TU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2187" y="803"/>
+        </scene>
+        <!--마일스톤-->
+        <scene sceneID="kaN-yV-eim">
+            <objects>
+                <viewController id="T95-LD-eab" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LMV-rg-6YI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Z8-gW-D9V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="마일스톤" image="signpost.right" catalog="system" id="61S-uh-rb1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRc-L6-UEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2187" y="1519"/>
+        </scene>
+        <!--내 계정-->
+        <scene sceneID="yab-TK-tg2">
+            <objects>
+                <viewController id="zC9-b8-UNU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s5e-M2-6AH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="80a-Fh-smT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="내 계정" id="EZw-m4-FhU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVb-To-RTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2187" y="2249"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="pNm-q4-K4N">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="B4g-PU-v45" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HZi-32-oqX">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="i1n-hd-Lmi" kind="relationship" relationship="viewControllers" id="d3P-UK-DIA"/>
+                        <segue destination="C81-Cb-FkU" kind="relationship" relationship="viewControllers" id="Yqh-BR-zWu"/>
+                        <segue destination="T95-LD-eab" kind="relationship" relationship="viewControllers" id="ua6-eG-vrp"/>
+                        <segue destination="zC9-b8-UNU" kind="relationship" relationship="viewControllers" id="sCA-Cm-WTG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W9U-n8-iGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276.8115942028987" y="88.392857142857139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="GitHub-Mark-Light" width="32" height="32"/>
         <image name="applelogo" catalog="system" width="103" height="128"/>
+        <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
+        <image name="signpost.right" catalog="system" width="128" height="118"/>
+        <image name="tag" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
