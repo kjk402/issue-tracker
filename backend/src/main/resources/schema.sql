@@ -29,7 +29,7 @@ create table `milestone`
     id                      int primary key auto_increment,
     title                   varchar(50),
     description             varchar(300),
-    last_modified_date_time TIMESTAMP,
+    last_modified_date_time timestamp,
     due_to_date             DATE
 );
 
