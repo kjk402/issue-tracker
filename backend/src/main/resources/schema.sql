@@ -1,3 +1,10 @@
+DROP SCHEMA IF EXISTS `issue_tracker` ;
+-- -----------------------------------------------------
+-- Schema issue_tracker
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `issue_tracker` DEFAULT CHARACTER SET utf8 ;
+USE `issue_tracker` ;
+
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `milestone`;
 DROP TABLE IF EXISTS `issue`;
