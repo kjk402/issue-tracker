@@ -117,8 +117,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="clQ-kI-Ybw">
-                                <rect key="frame" x="16" y="676" width="382" height="126"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="clQ-kI-Ybw">
+                                <rect key="frame" x="16" y="710" width="382" height="126"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzR-R1-E0y">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <inset key="titleEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="16" maxX="0.0" maxY="16"/>
+                                        <state key="normal" title="GitHub 계정으로 로그인" image="GitHub-Mark-Light">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ea0-kK-RwD">
+                                        <rect key="frame" x="0.0" y="70" width="382" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Apple 계정으로 로그인" image="applelogo" catalog="system"/>
+                                    </button>
+                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="126" id="SCX-P7-lK5"/>
                                 </constraints>
@@ -131,7 +151,7 @@
                             <constraint firstItem="Zvu-I0-1KM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GGP-H0-IuM"/>
                             <constraint firstItem="Zvu-I0-1KM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uet-Ow-3cc"/>
                             <constraint firstItem="Zvu-I0-1KM" firstAttribute="top" secondItem="oFx-NB-F3q" secondAttribute="bottom" constant="72" id="VVD-Je-MKg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="clQ-kI-Ybw" secondAttribute="bottom" constant="60" id="Wf0-1E-dco"/>
+                            <constraint firstAttribute="bottom" secondItem="clQ-kI-Ybw" secondAttribute="bottom" constant="60" id="Wf0-1E-dco"/>
                             <constraint firstItem="Zvu-I0-1KM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="clf-cr-J35"/>
                             <constraint firstItem="Zvu-I0-1KM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ham-cF-MNt"/>
                             <constraint firstItem="oFx-NB-F3q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hma-bY-RFg"/>
@@ -142,7 +162,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginProviderStackView" destination="clQ-kI-Ybw" id="99Z-RA-bFX"/>
+                        <outlet property="appleLoginButton" destination="Ea0-kK-RwD" id="7jS-FT-3S7"/>
+                        <outlet property="gitHubLoginButton" destination="KzR-R1-E0y" id="htT-5b-sI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -151,6 +172,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GitHub-Mark-Light" width="32" height="32"/>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
