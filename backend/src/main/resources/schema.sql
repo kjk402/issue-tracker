@@ -52,7 +52,7 @@ create table `issue_label`
     issue_id int,
     label_id int,
     CONSTRAINT fk_issue_label_issue FOREIGN KEY (issue_id) REFERENCES issue (id),
-    CONSTRAINT fk_issue_label_lable FOREIGN KEY (label_id) REFERENCES label (id)
+    CONSTRAINT fk_issue_label_label FOREIGN KEY (label_id) REFERENCES label (id)
 );
 
 create table `assigned`
