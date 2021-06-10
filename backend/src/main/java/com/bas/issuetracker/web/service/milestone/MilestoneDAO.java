@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -52,6 +53,11 @@ public class MilestoneDAO implements MilestoneRepository {
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public List<Milestone> findAll() {
+        return jdbcTemplate.query(FIND_MILESTONES, new MapSqlParameterSource(), milestoneMapper);
     }
 
     @Override

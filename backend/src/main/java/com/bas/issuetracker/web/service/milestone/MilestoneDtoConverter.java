@@ -3,7 +3,11 @@ package com.bas.issuetracker.web.service.milestone;
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.dto.MilestoneMetadata;
 import com.bas.issuetracker.web.dto.MilestonePreview;
+import com.bas.issuetracker.web.dto.MilestonePreviews;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MilestoneDtoConverter {
@@ -24,5 +28,12 @@ public class MilestoneDtoConverter {
                 .dueToDate(milestone.getDueToDate())
                 .isOpen(milestone.isOpen())
                 .build();
+    }
+
+    public MilestonePreviews MilestonesToMilestonePreviews(List<Milestone> milestones) {
+        List<MilestonePreview> previews = milestones.stream()
+                .map(this::milestoneToMilestonePreview)
+                .collect(Collectors.toList());
+        return new MilestonePreviews(previews);
     }
 }

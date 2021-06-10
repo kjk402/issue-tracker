@@ -3,12 +3,10 @@ package com.bas.issuetracker.web.controller;
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.dto.MilestoneMetadata;
 import com.bas.issuetracker.web.dto.MilestonePreview;
+import com.bas.issuetracker.web.dto.MilestonePreviews;
 import com.bas.issuetracker.web.service.milestone.MilestoneDtoConverter;
 import com.bas.issuetracker.web.service.milestone.MilestoneService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -28,5 +26,10 @@ public class MilestoneController {
     public MilestonePreview createMilestone(@RequestBody @Valid MilestoneMetadata metadata) {
         Milestone milestone = milestoneService.createMilestone(metadata);
         return milestoneDtoConverter.milestoneToMilestonePreview(milestone);
+    }
+
+    @GetMapping
+    public MilestonePreviews showMilestones() {
+        return milestoneService.showMilestones();
     }
 }

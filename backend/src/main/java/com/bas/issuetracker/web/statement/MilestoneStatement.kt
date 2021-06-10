@@ -11,6 +11,11 @@ from milestone
 where id = :id;
 """
 
+const val FIND_MILESTONES: String = """
+select id, title, description, last_modified_date_time, due_to_date, is_open
+from milestone;
+"""
+
 const val UPDATE_MILESTONE: String = """
 update milestone
 set title                   = :title,
