@@ -4,6 +4,7 @@ import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.dto.MilestoneMetadata;
 import com.bas.issuetracker.web.dto.MilestonePreview;
 import com.bas.issuetracker.web.dto.MilestonePreviews;
+import com.bas.issuetracker.web.dto.MilestoneState;
 import com.bas.issuetracker.web.service.milestone.MilestoneDtoConverter;
 import com.bas.issuetracker.web.service.milestone.MilestoneService;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,17 @@ public class MilestoneController {
     @PatchMapping("/{milestoneId}")
     public void updateMilestone(@PathVariable int milestoneId,
                                 @RequestBody @Valid MilestoneMetadata metadata) {
-        milestoneService.updateMetadata(milestoneId, metadata);
+        milestoneService.updateMilestone(milestoneId, metadata);
     }
+
+    @PatchMapping("/{milestoneId}/state")
+    public void updateMilestoneState(@PathVariable int milestoneId,
+                                     @RequestBody @Valid MilestoneState state) {
+        if (state.isOpen()) {
+            milestoneService.openMilestone(milestoneId);
+        } else {
+            milestoneService.closeMilestone(milestoneId);
+        }
+    }
+
 }

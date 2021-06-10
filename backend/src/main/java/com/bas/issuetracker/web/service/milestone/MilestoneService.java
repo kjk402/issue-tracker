@@ -43,21 +43,21 @@ public class MilestoneService {
     }
 
     @Transactional
-    public void updateMetadata(int milestoneId, MilestoneMetadata metadata) {
+    public void updateMilestone(int milestoneId, MilestoneMetadata metadata) {
         Milestone milestone = findMilestone(milestoneId);
         milestone.updateMetadata(metadata);
         milestoneRepository.update(milestone);
     }
 
     @Transactional
-    public void openMetadata(int milestoneId) {
+    public void openMilestone(int milestoneId) {
         Milestone milestone = findMilestone(milestoneId);
         milestone.open();
         milestoneRepository.update(milestone);
     }
 
     @Transactional
-    public void closeMetadata(int milestoneId) {
+    public void closeMilestone(int milestoneId) {
         Milestone milestone = findMilestone(milestoneId);
         milestone.close();
         milestoneRepository.update(milestone);

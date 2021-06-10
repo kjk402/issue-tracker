@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,7 +50,7 @@ class MilestoneServiceTest {
     void testUpdateMetadata() {
         Milestone milestone = createMilestone();
         MilestoneMetadata metadata = createMilestoneMetadata();
-        milestoneService.updateMetadata(milestone.getId(), metadata);
+        milestoneService.updateMilestone(milestone.getId(), metadata);
         Milestone updatedMilestone = milestoneService.findMilestone(milestone.getId());
         assertThat(updatedMilestone)
                 .extracting(
@@ -78,7 +77,7 @@ class MilestoneServiceTest {
     @DisplayName("마일스톤을 닫을 수 있어야 합니다")
     void testCloseMilestone() {
         Milestone milestone = createMilestone();
-        milestoneService.closeMetadata(milestone.getId());
+        milestoneService.closeMilestone(milestone.getId());
         Milestone closedMilestone = milestoneService.findMilestone(milestone.getId());
         assertThat(closedMilestone.isOpen()).isFalse();
     }
@@ -87,8 +86,8 @@ class MilestoneServiceTest {
     @DisplayName("마일스톤을 다시 열 수 있어야 합니다")
     void testReOpenMilestone() {
         Milestone milestone = createMilestone();
-        milestoneService.closeMetadata(milestone.getId());
-        milestoneService.openMetadata(milestone.getId());
+        milestoneService.closeMilestone(milestone.getId());
+        milestoneService.openMilestone(milestone.getId());
         Milestone reopenedMilestone = milestoneService.findMilestone(milestone.getId());
         assertThat(reopenedMilestone.isOpen()).isTrue();
     }
