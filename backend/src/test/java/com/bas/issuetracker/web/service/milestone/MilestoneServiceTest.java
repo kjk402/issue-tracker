@@ -2,6 +2,8 @@ package com.bas.issuetracker.web.service.milestone;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.dto.MilestoneMetadata;
+import com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException;
+import com.bas.issuetracker.web.exceptions.notfound.NotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 @Transactional
@@ -90,6 +93,15 @@ class MilestoneServiceTest {
         milestoneService.openMilestone(milestone.getId());
         Milestone reopenedMilestone = milestoneService.findMilestone(milestone.getId());
         assertThat(reopenedMilestone.isOpen()).isTrue();
+    }
+
+    @Test
+    @DisplayName("마일스톤을 삭제할 수 있어야 합니다")
+    void testDeleteMilestone() {
+        Milestone milestone = createMilestone();
+        milestoneService.deleteMilestone(milestone.getId());
+        assertThatThrownBy(() -> milestoneService.findMilestone(milestone.getId()))
+                .isInstanceOf(MilestoneNotFoundException.class);
     }
 
     private Milestone createMilestone() {

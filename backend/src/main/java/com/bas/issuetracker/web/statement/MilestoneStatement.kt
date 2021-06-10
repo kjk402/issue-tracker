@@ -25,3 +25,7 @@ set title                   = :title,
     is_open                 = :is_open
 where id = :id;
 """
+
+const val DELETE_MILESTONE: String = """
+delete from milestone where id = :id;
+"""

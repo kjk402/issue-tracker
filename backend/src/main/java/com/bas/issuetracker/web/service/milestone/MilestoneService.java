@@ -62,4 +62,10 @@ public class MilestoneService {
         milestone.close();
         milestoneRepository.update(milestone);
     }
+
+    @Transactional
+    public void deleteMilestone(int milestoneId) {
+        findMilestone(milestoneId);
+        milestoneRepository.delete(milestoneId);
+    }
 }

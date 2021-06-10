@@ -11,4 +11,6 @@ public interface MilestoneRepository {
     List<Milestone> findAll();
 
     void update(Milestone milestone);
+
+    void delete(int id);
 }

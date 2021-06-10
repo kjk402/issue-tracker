@@ -70,4 +70,11 @@ public class MilestoneDAO implements MilestoneRepository {
                 .addValue("is_open", milestone.isOpen());
         jdbcTemplate.update(UPDATE_MILESTONE, mapSqlParameterSource);
     }
+
+    @Override
+    public void delete(int id) {
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
+                .addValue("id", id);
+        jdbcTemplate.update(DELETE_MILESTONE, mapSqlParameterSource);
+    }
 }
