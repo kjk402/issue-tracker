@@ -21,10 +21,11 @@ public class MilestoneService {
         this.milestoneDtoConverter = milestoneDtoConverter;
     }
 
+    @Transactional
     public Milestone createMilestone(MilestoneMetadata metadata) {
         Milestone milestone = milestoneDtoConverter.metadataToMilestone(metadata);
-        milestone.touch();
         milestone.open();
+        milestone.touch();
         return milestoneRepository.create(milestone);
     }
 
@@ -33,18 +34,21 @@ public class MilestoneService {
                 .orElseThrow(() -> new MilestoneNotFoundException(MILESTONE_NOT_FOUND, milestoneId));
     }
 
+    @Transactional
     public void updateMetadata(int milestoneId, MilestoneMetadata metadata) {
         Milestone milestone = findMilestone(milestoneId);
         milestone.updateMetadata(metadata);
         milestoneRepository.update(milestone);
     }
 
+    @Transactional
     public void openMetadata(int milestoneId) {
         Milestone milestone = findMilestone(milestoneId);
         milestone.open();
         milestoneRepository.update(milestone);
     }
 
+    @Transactional
     public void closeMetadata(int milestoneId) {
         Milestone milestone = findMilestone(milestoneId);
         milestone.close();
