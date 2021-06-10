@@ -29,7 +29,7 @@ public class MilestoneDAO implements MilestoneRepository {
     }
 
     @Override
-    public Milestone save(Milestone milestone) {
+    public Milestone create(Milestone milestone) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("title", milestone.getTitle())
@@ -37,7 +37,7 @@ public class MilestoneDAO implements MilestoneRepository {
                 .addValue("last_modified_date_time", milestone.getLastModifiedDateTime())
                 .addValue("due_to_date", milestone.getDueToDate())
                 .addValue("is_open", milestone.isOpen());
-        jdbcTemplate.update(SAVE_MILESTONE, mapSqlParameterSource, keyHolder);
+        jdbcTemplate.update(CREATE_MILESTONE, mapSqlParameterSource, keyHolder);
         milestone.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return milestone;
     }

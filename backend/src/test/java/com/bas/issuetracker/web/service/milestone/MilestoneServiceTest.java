@@ -94,14 +94,8 @@ class MilestoneServiceTest {
     }
 
     private Milestone createMilestone() {
-        Milestone milestone = Milestone.builder()
-                .description("milestone description")
-                .title("milestone title")
-                .dueToDate(LocalDate.of(2021, 6, 1))
-                .lastModifiedDateTime(LocalDateTime.of(2021, 6, 1, 12, 12))
-                .isOpen(true)
-                .build();
-        return milestoneService.saveMilestone(milestone);
+        MilestoneMetadata metadata = createMilestoneMetadata();
+        return milestoneService.createMilestone(metadata);
     }
 
     private MilestoneMetadata createMilestoneMetadata() {

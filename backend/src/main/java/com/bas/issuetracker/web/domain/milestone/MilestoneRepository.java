@@ -3,7 +3,7 @@ package com.bas.issuetracker.web.domain.milestone;
 import java.util.Optional;
 
 public interface MilestoneRepository {
-    Milestone save(Milestone milestone);
+    Milestone create(Milestone milestone);
 
     Optional<Milestone> findById(int id);
 

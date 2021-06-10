@@ -27,6 +27,10 @@ public class Milestone {
         this.dueToDate = metadata.getDueToDate();
     }
 
+    public void touch() {
+        this.lastModifiedDateTime = LocalDateTime.now().withNano(0);
+    }
+
     public void open() {
         this.isOpen = true;
     }

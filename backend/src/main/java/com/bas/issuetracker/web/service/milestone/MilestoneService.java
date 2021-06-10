@@ -14,13 +14,18 @@ import static com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundExce
 public class MilestoneService {
 
     private final MilestoneRepository milestoneRepository;
+    private final MilestoneDtoConverter milestoneDtoConverter;
 
-    public MilestoneService(MilestoneRepository milestoneRepository) {
+    public MilestoneService(MilestoneRepository milestoneRepository, MilestoneDtoConverter milestoneDtoConverter) {
         this.milestoneRepository = milestoneRepository;
+        this.milestoneDtoConverter = milestoneDtoConverter;
     }
 
-    public Milestone saveMilestone(Milestone milestone) {
-        return milestoneRepository.save(milestone);
+    public Milestone createMilestone(MilestoneMetadata metadata) {
+        Milestone milestone = milestoneDtoConverter.metadataToMilestone(metadata);
+        milestone.touch();
+        milestone.open();
+        return milestoneRepository.create(milestone);
     }
 
     public Milestone findMilestone(int milestoneId) {
