@@ -20,10 +20,12 @@ class IssuesViewController: UIViewController {
         issuesTableView.register(IssueTableViewCell.nib(), forCellReuseIdentifier: IssueTableViewCell.reuseIdentifier)
         issuesTableView.estimatedRowHeight = UITableView.automaticDimension
         issuesTableView.dataSource = self
+        issuesTableView.delegate = self
+        issuesTableView.sectionFooterHeight = 57.0
     }
 }
 
-extension IssuesViewController: UITableViewDataSource {
+extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
@@ -34,5 +36,10 @@ extension IssuesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = IssueTableViewFooterView()
+        return footerView
     }
 }
