@@ -1,9 +1,8 @@
 package com.bas.issuetracker.web.service.milestone;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
-import com.bas.issuetracker.web.dto.MilestoneMetadata;
+import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
 import com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException;
-import com.bas.issuetracker.web.exceptions.notfound.NotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

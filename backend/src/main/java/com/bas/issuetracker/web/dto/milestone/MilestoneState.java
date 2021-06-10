@@ -1,4 +1,4 @@
-package com.bas.issuetracker.web.dto;
+package com.bas.issuetracker.web.dto.milestone;
 
 import lombok.NoArgsConstructor;
 

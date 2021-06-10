@@ -2,8 +2,8 @@ package com.bas.issuetracker.web.service.milestone;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.domain.milestone.MilestoneRepository;
-import com.bas.issuetracker.web.dto.MilestoneMetadata;
-import com.bas.issuetracker.web.dto.MilestonePreviews;
+import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
+import com.bas.issuetracker.web.dto.milestone.MilestonePreviews;
 import com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.bas.issuetracker.web.dto;
+package com.bas.issuetracker.web.dto.milestone;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

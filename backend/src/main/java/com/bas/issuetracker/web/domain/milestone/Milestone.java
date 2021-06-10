@@ -1,6 +1,6 @@
 package com.bas.issuetracker.web.domain.milestone;
 
-import com.bas.issuetracker.web.dto.MilestoneMetadata;
+import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
 import lombok.Builder;
 import lombok.Getter;
 

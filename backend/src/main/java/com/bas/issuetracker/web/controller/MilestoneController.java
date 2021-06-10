@@ -1,10 +1,10 @@
 package com.bas.issuetracker.web.controller;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
-import com.bas.issuetracker.web.dto.MilestoneMetadata;
-import com.bas.issuetracker.web.dto.MilestonePreview;
-import com.bas.issuetracker.web.dto.MilestonePreviews;
-import com.bas.issuetracker.web.dto.MilestoneState;
+import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
+import com.bas.issuetracker.web.dto.milestone.MilestonePreview;
+import com.bas.issuetracker.web.dto.milestone.MilestonePreviews;
+import com.bas.issuetracker.web.dto.milestone.MilestoneState;
 import com.bas.issuetracker.web.service.milestone.MilestoneDtoConverter;
 import com.bas.issuetracker.web.service.milestone.MilestoneService;
 import org.springframework.web.bind.annotation.*;
