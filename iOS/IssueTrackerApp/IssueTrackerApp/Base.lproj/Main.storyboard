@@ -170,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="2.8985507246376816" y="88.392857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Issues View Controller-->
         <scene sceneID="fmP-dO-1j7">
             <objects>
-                <viewController id="i1n-hd-Lmi" sceneMemberID="viewController">
+                <viewController id="i1n-hd-Lmi" customClass="IssuesViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hBS-oJ-0wz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,6 +205,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Rw-7E-8QB"/>
+                    <connections>
+                        <outlet property="issuesTableView" destination="KPW-gz-92D" id="v0L-p4-BMc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNa-R8-wJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
