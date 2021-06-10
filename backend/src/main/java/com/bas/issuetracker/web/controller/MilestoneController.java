@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/milestones")
 public class MilestoneController {
@@ -23,7 +25,7 @@ public class MilestoneController {
     }
 
     @PostMapping
-    public MilestonePreview createMilestone(@RequestBody MilestoneMetadata metadata) {
+    public MilestonePreview createMilestone(@RequestBody @Valid MilestoneMetadata metadata) {
         Milestone milestone = milestoneService.createMilestone(metadata);
         return milestoneDtoConverter.milestoneToMilestonePreview(milestone);
     }
