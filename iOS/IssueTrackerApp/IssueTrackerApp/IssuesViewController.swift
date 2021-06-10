@@ -14,6 +14,8 @@ class IssuesViewController: UIViewController {
         navigationItem.title = "이슈"
 
         configureTableView()
+        configureFilterBarButtonItem()
+        configureSelectBarButtonItem()
     }
 
     private func configureTableView() {
@@ -22,6 +24,27 @@ class IssuesViewController: UIViewController {
         issuesTableView.dataSource = self
         issuesTableView.delegate = self
         issuesTableView.sectionFooterHeight = 57.0
+    }
+
+    private func configureFilterBarButtonItem() {
+        let button = UIButton(type: .system)
+        let filterImage = UIImage(systemName: "line.horizontal.3.decrease")
+        button.setImage(filterImage, for: .normal)
+        button.setTitle("필터", for: .normal)
+        button.sizeToFit()
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+
+    private func configureSelectBarButtonItem() {
+        let button = UIButton(type: .system)
+        let checkmarkImage = UIImage(systemName: "checkmark.circle")
+        button.setImage(checkmarkImage, for: .normal)
+        button.setTitle("선택", for: .normal)
+        button.sizeToFit()
+        button.semanticContentAttribute = .forceRightToLeft
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
 }
 
