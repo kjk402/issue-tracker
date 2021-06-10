@@ -32,4 +32,10 @@ public class MilestoneController {
     public MilestonePreviews showMilestones() {
         return milestoneService.showMilestones();
     }
+
+    @PatchMapping("/{milestoneId}")
+    public void updateMilestone(@PathVariable int milestoneId,
+                                @RequestBody @Valid MilestoneMetadata metadata) {
+        milestoneService.updateMetadata(milestoneId, metadata);
+    }
 }
