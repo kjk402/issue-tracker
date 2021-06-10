@@ -27,7 +27,7 @@ public class OAuthDataService {
                 githubApi.getScopeValue();
     }
 
-    public OAuthLoginData createIosOAuthData() {
+    public OAuthLoginData showGithubOAuthData() {
         return new OAuthLoginData(oauthSecret.getIosClientIdValue(), githubApi.getScopeValue());
     }
 }

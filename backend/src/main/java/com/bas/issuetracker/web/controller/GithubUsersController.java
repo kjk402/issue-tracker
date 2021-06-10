@@ -1,10 +1,10 @@
 package com.bas.issuetracker.web.controller;
 
-import com.bas.issuetracker.web.config.annotation.CertifiedUser;
 import com.bas.issuetracker.web.config.annotation.UserAgent;
 import com.bas.issuetracker.web.config.properties.OAuthSecret;
 import com.bas.issuetracker.web.domain.user.User;
 import com.bas.issuetracker.web.domain.user.UserAgentEnum;
+import com.bas.issuetracker.web.dto.OAuthLoginData;
 import com.bas.issuetracker.web.dto.UserWithToken;
 import com.bas.issuetracker.web.service.oauth.OAuthDataService;
 import com.bas.issuetracker.web.service.oauth.OauthApiRequester;
@@ -13,7 +13,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,4 +58,8 @@ public class GithubUsersController {
         return userService.processLogin(user);
     }
 
+    @GetMapping
+    public OAuthLoginData showOAuthData() {
+        return oauthDataService.showGithubOAuthData();
+    }
 }
