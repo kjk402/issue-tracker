@@ -1,18 +1,13 @@
 package com.bas.issuetracker.web.service.label;
 
 import com.bas.issuetracker.web.domain.label.Label;
-import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.dto.label.LabelMetadata;
-import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
 import com.bas.issuetracker.web.exceptions.notfound.LabelNotFoundException;
-import com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
