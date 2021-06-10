@@ -177,8 +177,32 @@
                     <view key="view" contentMode="scaleToFill" id="hBS-oJ-0wz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KPW-gz-92D">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbb-8I-WNE">
+                                <rect key="frame" x="354" y="753" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5QZ-Fs-U0E"/>
+                                    <constraint firstAttribute="width" constant="44" id="EG1-il-r0z"/>
+                                </constraints>
+                                <state key="normal" image="plus.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="39"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bxt-1y-3Vj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KPW-gz-92D" firstAttribute="leading" secondItem="bxt-1y-3Vj" secondAttribute="leading" id="2tf-UG-m6N"/>
+                            <constraint firstItem="KPW-gz-92D" firstAttribute="top" secondItem="bxt-1y-3Vj" secondAttribute="top" id="Qge-EI-C0Y"/>
+                            <constraint firstItem="bxt-1y-3Vj" firstAttribute="bottom" secondItem="Cbb-8I-WNE" secondAttribute="bottom" constant="16" id="Usg-WO-PFT"/>
+                            <constraint firstItem="bxt-1y-3Vj" firstAttribute="bottom" secondItem="KPW-gz-92D" secondAttribute="bottom" id="WWP-ae-l55"/>
+                            <constraint firstItem="bxt-1y-3Vj" firstAttribute="trailing" secondItem="KPW-gz-92D" secondAttribute="trailing" id="uD1-4n-ynG"/>
+                            <constraint firstItem="bxt-1y-3Vj" firstAttribute="trailing" secondItem="Cbb-8I-WNE" secondAttribute="trailing" constant="16" id="uoo-Dj-AoT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Rw-7E-8QB"/>
                 </viewController>
@@ -336,6 +360,7 @@
         <image name="GitHub-Mark-Light" width="32" height="32"/>
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="signpost.right" catalog="system" width="128" height="118"/>
         <image name="tag" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
