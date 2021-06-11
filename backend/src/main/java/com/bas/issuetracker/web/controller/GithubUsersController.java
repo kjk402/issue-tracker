@@ -59,7 +59,7 @@ public class GithubUsersController {
     }
 
     @GetMapping
-    public OAuthLoginData showOAuthData() {
-        return oauthDataService.showGithubOAuthData();
+    public OAuthLoginData showOAuthData(@UserAgent UserAgentEnum userAgent) {
+        return oauthDataService.showGithubOAuthData(userAgent);
     }
 }

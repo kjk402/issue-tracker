@@ -2,6 +2,7 @@ package com.bas.issuetracker.web.service.oauth;
 
 import com.bas.issuetracker.web.config.properties.GithubApi;
 import com.bas.issuetracker.web.config.properties.OAuthSecret;
+import com.bas.issuetracker.web.domain.user.UserAgentEnum;
 import com.bas.issuetracker.web.dto.OAuthLoginData;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class OAuthDataService {
                 githubApi.getScopeValue();
     }
 
-    public OAuthLoginData showGithubOAuthData() {
-        return new OAuthLoginData(oauthSecret.getIosClientIdValue(), githubApi.getScopeValue());
+    public OAuthLoginData showGithubOAuthData(UserAgentEnum userAgent) {
+        return new OAuthLoginData(oauthSecret.clientId(userAgent), githubApi.getScopeValue());
     }
 }
