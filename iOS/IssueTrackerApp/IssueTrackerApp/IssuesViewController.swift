@@ -30,6 +30,8 @@ class IssuesViewController: UIViewController {
         button.setImage(filterImage, for: .normal)
         button.setTitle("필터", for: .normal)
         button.sizeToFit()
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentEdgeInsets = UIEdgeInsets(top: 13.0, left: 0.0, bottom: 13.0, right: 0.0)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }
@@ -40,6 +42,8 @@ class IssuesViewController: UIViewController {
         button.setImage(checkmarkImage, for: .normal)
         button.setTitle("선택", for: .normal)
         button.sizeToFit()
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentEdgeInsets = UIEdgeInsets(top: 13.0, left: 0.0, bottom: 13.0, right: 0.0)
         button.semanticContentAttribute = .forceRightToLeft
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
