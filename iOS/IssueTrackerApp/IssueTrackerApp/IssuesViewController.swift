@@ -54,7 +54,11 @@ class IssuesViewController: UIViewController {
         issuesTableView.estimatedRowHeight = UITableView.automaticDimension
         issuesTableView.dataSource = self
         issuesTableView.delegate = self
-        issuesTableView.sectionFooterHeight = 57.0
+        let footerView = IssueTableViewFooterView(frame: CGRect(x: 0.0,
+                                                                y: 0.0,
+                                                                width: self.view.bounds.size.width,
+                                                                height: 39.0))
+        issuesTableView.tableFooterView = footerView
     }
 
     private func configureSearchController() {
@@ -78,11 +82,6 @@ extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = IssueTableViewFooterView()
-        return footerView
     }
 
     func tableView(_ tableView: UITableView,
@@ -122,5 +121,9 @@ extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
         return alert
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        issuesTableView.tableFooterView?.isHidden = searchController.searchBar.frame.size.height > 0
     }
 }
