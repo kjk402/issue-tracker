@@ -9,21 +9,19 @@ import UIKit
 
 class IssuesViewController: UIViewController {
     @IBOutlet weak var issuesTableView: UITableView!
+    private var searchController: UISearchController!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "이슈"
 
-        configureTableView()
         configureFilterBarButtonItem()
         configureSelectBarButtonItem()
+        configureTableView()
     }
 
-    private func configureTableView() {
-        issuesTableView.register(IssueTableViewCell.nib(), forCellReuseIdentifier: IssueTableViewCell.reuseIdentifier)
-        issuesTableView.estimatedRowHeight = UITableView.automaticDimension
-        issuesTableView.dataSource = self
-        issuesTableView.delegate = self
-        issuesTableView.sectionFooterHeight = 57.0
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureSearchController()
     }
 
     private func configureFilterBarButtonItem() {
@@ -46,7 +44,23 @@ class IssuesViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
+
+    private func configureTableView() {
+        issuesTableView.register(IssueTableViewCell.nib(), forCellReuseIdentifier: IssueTableViewCell.reuseIdentifier)
+        issuesTableView.estimatedRowHeight = UITableView.automaticDimension
+        issuesTableView.dataSource = self
+        issuesTableView.delegate = self
+        issuesTableView.sectionFooterHeight = 57.0
+    }
+
+    private func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
 }
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
