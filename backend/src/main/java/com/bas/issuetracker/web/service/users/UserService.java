@@ -28,7 +28,8 @@ public class UserService {
     @Transactional
     public UserWithToken processLogin(User loginRequester) {
         User user = createIfNotFound(loginRequester);
-        updateWithNewToken(user);
+        String token = tokenService.createToken(user.getId());
+        updateWithNewToken(user, token);
         return userDtoConverter.userToUserWithToken(user);
     }
 
@@ -47,8 +48,8 @@ public class UserService {
         return user;
     }
 
-    private void updateWithNewToken(User user) {
-        String token = tokenService.createToken(user.getId());
+    @Transactional
+    public void updateWithNewToken(User user, String token) {
         user.updateToken(token);
         userRepository.updateAccessToken(user.getId(), user.getAccessToken());
     }
