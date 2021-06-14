@@ -4,6 +4,7 @@ import com.bas.issuetracker.web.config.annotation.UserAgent;
 import com.bas.issuetracker.web.config.properties.OAuthSecret;
 import com.bas.issuetracker.web.domain.user.User;
 import com.bas.issuetracker.web.domain.user.UserAgentEnum;
+import com.bas.issuetracker.web.dto.OAuthLoginData;
 import com.bas.issuetracker.web.dto.UserWithToken;
 import com.bas.issuetracker.web.service.oauth.OAuthDataService;
 import com.bas.issuetracker.web.service.oauth.OauthApiRequester;
@@ -57,4 +58,8 @@ public class GithubUsersController {
         return userService.processLogin(user);
     }
 
+    @GetMapping
+    public OAuthLoginData showOAuthData(@UserAgent UserAgentEnum userAgent) {
+        return oauthDataService.showGithubOAuthData(userAgent);
+    }
 }

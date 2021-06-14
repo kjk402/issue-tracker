@@ -51,3 +51,6 @@ values ('comment 1', 1, 1),
        ('comment 10', 1, 3),
        ('comment 11', 1, 3),
        ('comment 12', 1, 3);
+
+insert into user (id, oauth_id, authenticated_by, nickname, name, profile_image, access_token)
+values (1, '1111', 'GITHUB', 'tester', 'tester', 'no-image', '');
