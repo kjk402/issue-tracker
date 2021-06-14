@@ -34,8 +34,8 @@ public class SwaggerConfig {
 
         Set<String> responseContentType = new HashSet<>();
         responseContentType.add("application/json;charset=UTF-8");
-
         List<Parameter> global = new ArrayList<>();
+
         global.add(new ParameterBuilder().name("Authorization").
                 defaultValue("bearer ").
                 description("Access Token").parameterType("header").

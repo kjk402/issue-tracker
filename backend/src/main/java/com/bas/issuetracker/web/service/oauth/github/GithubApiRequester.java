@@ -1,7 +1,6 @@
 package com.bas.issuetracker.web.service.oauth.github;
 
 import com.bas.issuetracker.web.config.properties.GithubApi;
-import com.bas.issuetracker.web.config.properties.OAuthSecret;
 import com.bas.issuetracker.web.domain.user.User;
 import com.bas.issuetracker.web.dto.GithubProfile;
 import com.bas.issuetracker.web.dto.ReceivedAccessToken;

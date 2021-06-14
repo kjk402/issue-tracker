@@ -35,6 +35,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/milestones/**")
-                .addPathPatterns("/labels/**");
+                .addPathPatterns("/labels/**")
+                .addPathPatterns("/comments/**")
+                .addPathPatterns("/issues/**");
     }
+
 }

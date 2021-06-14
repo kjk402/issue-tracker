@@ -74,10 +74,15 @@ create table `assigned`
 
 create table `comment`
 (
-    id        int primary key auto_increment,
-    content   varchar(1000),
-    issue_id  int,
-    author_id int,
+    id                      int primary key auto_increment,
+    content                 varchar(1000),
+    issue_id                int,
+    author_id               int,
+    deletable               BOOLEAN,
+    last_modified_date_time TIMESTAMP,
     CONSTRAINT fk_comment_issue FOREIGN KEY (issue_id) REFERENCES issue (id),
     CONSTRAINT fk_comment_user FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+SET GLOBAL time_zone = '+09:00';
+SET time_zone = '+09:00';

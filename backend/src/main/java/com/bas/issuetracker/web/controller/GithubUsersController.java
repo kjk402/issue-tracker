@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@Api(tags = {"User Controller"})
+@Api(tags = {"User API"})
 @RequestMapping("/users/github")
 @RestController
 public class GithubUsersController {
