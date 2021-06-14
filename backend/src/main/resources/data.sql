@@ -40,13 +40,13 @@ values (1, 1),
 insert into comment (content, issue_id, author_id, deletable)
 values ('comment 1', 1, 1, false),
        ('comment 2', 1, 1, true),
+       ('comment 3', 2, 1, false),
+       ('comment 4', 2, 1, true),
+       ('comment 5', 3, 1, false),
+       ('comment 6', 4, 1, false),
        ('comment 7', 1, 2, true),
        ('comment 8', 1, 2, true),
        ('comment 9', 1, 3, true),
        ('comment 10', 1, 3, true),
        ('comment 11', 1, 3, true),
-       ('comment 12', 1, 3, true),
-       ('comment 3', 2, 1, false),
-       ('comment 4', 2, 1, true),
-       ('comment 5', 3, 1, false),
-       ('comment 6', 4, 1, false);
+       ('comment 12', 1, 3, true);

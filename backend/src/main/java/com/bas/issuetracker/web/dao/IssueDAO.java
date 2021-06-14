@@ -4,6 +4,7 @@ import com.bas.issuetracker.web.dto.issue.IssueDTO;
 import com.bas.issuetracker.web.dto.issue.IssueListDTO;
 import com.bas.issuetracker.web.dto.issue.IssueRequestDTO;
 import com.bas.issuetracker.web.dto.issue.UserDTO;
+import com.bas.issuetracker.web.dto.search.SearchFilterData;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -62,9 +63,47 @@ public class IssueDAO {
                                 rs.getString("name"),
                                 rs.getString("profile_image")
                         )
-
                 )));
         return issueListDTOS;
+    }
+
+    public List<Integer> findIssuesByFilter(SearchFilterData filter, int searcherId) {
+        MapSqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue("is_open", filter.isOpen());
+        StringBuilder query = new StringBuilder()
+                .append(SEARCH_ISSUES_BY_FILTER_BODY);
+        appendAssigneeIsMe(query, filter, parameter, searcherId);
+        appendCommentByMe(query, filter, parameter, searcherId);
+        query.append(FILTER_PART_IS_OPENED);
+        appendAuthorIsMe(query, filter, parameter, searcherId);
+        query.append(FILTER_PART_END_OF_QUERY);
+
+        return executeFindIssuesByFilterQuery(query.toString(), parameter);
+    }
+
+    private List<Integer> executeFindIssuesByFilterQuery(String query, MapSqlParameterSource parameter) {
+        return namedParameterJdbcTemplate.query(query, parameter, (rs, rowNum) -> rs.getInt("i.id"));
+    }
+
+    private void appendAssigneeIsMe(StringBuilder query, SearchFilterData filter, MapSqlParameterSource parameter, int myId) {
+        if (filter.isAssigneeIsMe()) {
+            query.append(FILTER_PART_ASSIGNED_BY_ME);
+            parameter.addValue("assigned_user_id", myId);
+        }
+    }
+
+    private void appendCommentByMe(StringBuilder query, SearchFilterData filter, MapSqlParameterSource parameter, int myId) {
+        if (filter.isCommentByMe()) {
+            query.append(FILTER_PART_COMMENT_BY_ME);
+            parameter.addValue("comment_author_id", myId);
+        }
+    }
+
+    private void appendAuthorIsMe(StringBuilder query, SearchFilterData filter, MapSqlParameterSource parameter, int myId) {
+        if (filter.isAuthorIsMe()) {
+            query.append(FILTER_PART_ISSUE_AUTHOR);
+            parameter.addValue("issue_author_id", myId);
+        }
     }
 
     public int saveIssueAndComment(int userId, IssueRequestDTO issueRequestDTO) {
@@ -101,5 +140,4 @@ public class IssueDAO {
                 .addValue("issue_ids", issueIds);
         namedParameterJdbcTemplate.update(sql, sqlParameterSource);
     }
-
 }
