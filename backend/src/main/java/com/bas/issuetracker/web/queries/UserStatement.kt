@@ -18,7 +18,6 @@ from user
 where id = :id;
 """
 
-
 const val UPDATE_TOKEN: String = """
 update user
 set access_token = :access_token

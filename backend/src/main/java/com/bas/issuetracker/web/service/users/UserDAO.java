@@ -40,7 +40,7 @@ public class UserDAO implements UserRepository {
                 .addValue("oauth_id", user.getOauthId())
                 .addValue("authenticated_by", user.getAuthenticatedBy().name());
         jdbcTemplate.update(SAVE_USER, mapSqlParameterSource, keyHolder);
-        user.setId(Objects.requireNonNull(keyHolder.getKey()).intValue());
+        user.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return user;
     }
 

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@Api(tags = {"Issue-Tracker API"})
+@Api(tags = {"User API"})
 @RequestMapping("/users/github")
 @RestController
 public class GithubUsersController {

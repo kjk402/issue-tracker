@@ -11,6 +11,8 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/libs-milestone'}
+
 }
 
 dependencies {
@@ -19,7 +21,6 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	runtimeOnly 'mysql:mysql-connector-java'
-
 
 	// swagger
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
@@ -39,6 +40,9 @@ dependencies {
 
 	//jwt
 	implementation 'com.auth0:java-jwt:3.8.2'
+
+	//validation
+	implementation('org.springframework.boot:spring-boot-starter-validation')
 }
 
 test {
@@ -55,3 +59,11 @@ compileTestKotlin {
 		jvmTarget = "1.8"
 	}
 }
+
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.cloud:spring-cloud-aws:2.2.1.RELEASE'
+	}
+}
+
+

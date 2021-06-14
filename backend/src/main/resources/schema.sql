@@ -1,9 +1,9 @@
-DROP SCHEMA IF EXISTS `issue_tracker` ;
+DROP SCHEMA IF EXISTS `issue_tracker`;
 -- -----------------------------------------------------
 -- Schema issue_tracker
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `issue_tracker` DEFAULT CHARACTER SET utf8 ;
-USE `issue_tracker` ;
+CREATE SCHEMA IF NOT EXISTS `issue_tracker` DEFAULT CHARACTER SET utf8;
+USE `issue_tracker`;
 
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `milestone`;
@@ -29,8 +29,9 @@ create table `milestone`
     id                      int primary key auto_increment,
     title                   varchar(50),
     description             varchar(300),
-    last_modified_date_time TIMESTAMP,
-    due_to_date             DATE
+    last_modified_date_time timestamp,
+    due_to_date             DATE,
+    is_open                 BOOLEAN
 );
 
 create table `issue`
@@ -73,10 +74,15 @@ create table `assigned`
 
 create table `comment`
 (
-    id        int primary key auto_increment,
-    content   varchar(1000),
-    issue_id  int,
-    author_id int,
+    id                      int primary key auto_increment,
+    content                 varchar(1000),
+    issue_id                int,
+    author_id               int,
+    deletable               BOOLEAN,
+    last_modified_date_time TIMESTAMP,
     CONSTRAINT fk_comment_issue FOREIGN KEY (issue_id) REFERENCES issue (id),
     CONSTRAINT fk_comment_user FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+SET GLOBAL time_zone = '+09:00';
+SET time_zone = '+09:00';
