@@ -9,12 +9,11 @@ VALUES ('backend', 'backend description', '#c2e0c6'),
        ('front', 'front description', '#AE72E0');
 
 insert into user (id, oauth_id, authenticated_by, nickname, name, profile_image, access_token)
-values (1, '123', 'GITHUB', 'tester1', 'arthur morgan', 'morgan.img', ''),
+values (1, '1111', 'GITHUB', 'tester', 'tester', 'no-image', ''),
        (2, '456', 'GITHUB', 'tester2', 'test2', 'test2.img', ''),
        (3, '789', 'GITHUB', 'tester3', 'test3', 'test3.img', ''),
        (4, '000', 'GITHUB', 'tester4', 'test4', 'test4.img', '')
 ;
-
 
 insert into issue (title, author_id, is_open, milestone_id, last_modified_date_time)
 values ('issue1', 1, true, 1, timestamp('2021-06-12 14:03:21')),
@@ -51,6 +50,3 @@ values ('comment 1', 1, 1),
        ('comment 10', 1, 3),
        ('comment 11', 1, 3),
        ('comment 12', 1, 3);
-
-insert into user (id, oauth_id, authenticated_by, nickname, name, profile_image, access_token)
-values (1, '1111', 'GITHUB', 'tester', 'tester', 'no-image', '');
