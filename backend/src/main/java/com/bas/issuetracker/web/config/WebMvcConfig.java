@@ -34,6 +34,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authInterceptor)
-                .addPathPatterns("/users/github/test");
+                .addPathPatterns("/users/github/test")
+                .addPathPatterns("/comments/**")
+                .addPathPatterns("/issues/**");
     }
+
 }

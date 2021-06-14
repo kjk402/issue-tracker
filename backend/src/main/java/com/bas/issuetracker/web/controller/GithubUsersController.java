@@ -1,6 +1,5 @@
 package com.bas.issuetracker.web.controller;
 
-import com.bas.issuetracker.web.config.annotation.CertifiedUser;
 import com.bas.issuetracker.web.config.annotation.UserAgent;
 import com.bas.issuetracker.web.config.properties.OAuthSecret;
 import com.bas.issuetracker.web.domain.user.User;
@@ -13,7 +12,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@Api(tags = {"Issue-Tracker API"})
+@Api(tags = {"User API"})
 @RequestMapping("/users/github")
 @RestController
 public class GithubUsersController {
