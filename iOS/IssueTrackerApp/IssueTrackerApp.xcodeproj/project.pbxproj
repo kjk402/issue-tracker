@@ -19,6 +19,8 @@
 		E483FDF82671F8990036DE49 /* IssueTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */; };
 		E483FE042674964D0036DE49 /* LoginQueryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE032674964D0036DE49 /* LoginQueryParameters.swift */; };
 		E483FE06267498540036DE49 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE05267498540036DE49 /* Endpoint.swift */; };
+		E483FE10267866900036DE49 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE0F267866900036DE49 /* DataTransferService.swift */; };
+		E483FE12267866B00036DE49 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE11267866B00036DE49 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewFooterView.swift; sourceTree = "<group>"; };
 		E483FE032674964D0036DE49 /* LoginQueryParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQueryParameters.swift; sourceTree = "<group>"; };
 		E483FE05267498540036DE49 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E483FE0F267866900036DE49 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
+		E483FE11267866B00036DE49 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				E483FDF22671D8880036DE49 /* IssueTableViewCell.xib */,
 				E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */,
 				E483FE032674964D0036DE49 /* LoginQueryParameters.swift */,
+				E483FE0F267866900036DE49 /* DataTransferService.swift */,
+				E483FE11267866B00036DE49 /* NetworkService.swift */,
 				E483FE05267498540036DE49 /* Endpoint.swift */,
 				E44066C0266F2479007C8753 /* Main.storyboard */,
 				E4C4E002267099860039807B /* Supporting Files */,
@@ -185,6 +191,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E483FE12267866B00036DE49 /* NetworkService.swift in Sources */,
+				E483FE10267866900036DE49 /* DataTransferService.swift in Sources */,
 				E483FDEA26709C390036DE49 /* IssuesViewController.swift in Sources */,
 				E483FDF82671F8990036DE49 /* IssueTableViewFooterView.swift in Sources */,
 				E483FE06267498540036DE49 /* Endpoint.swift in Sources */,
