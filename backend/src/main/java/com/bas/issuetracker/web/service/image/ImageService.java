@@ -21,7 +21,7 @@ public class ImageService {
     }
 
     public void showImageOfIssue() {
-        
+
     }
 
     @Transactional
