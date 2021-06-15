@@ -2,12 +2,18 @@ package com.bas.issuetracker.web.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.bas.issuetracker.web.exceptions.FileUploadFailedException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.UUID;
+
+import static com.bas.issuetracker.web.exceptions.FileUploadFailedException.INVALID_FILE_NAME;
+import static com.bas.issuetracker.web.exceptions.FileUploadFailedException.NO_FILE_NAME;
 
 @Service
 public class S3FileUploader {
@@ -22,13 +28,30 @@ public class S3FileUploader {
     }
 
     public String upload(MultipartFile multipartFile) throws IOException {
-        String fileName = multipartFile.getOriginalFilename();
+        String extention = extractExtention(multipartFile.getOriginalFilename());
+        String newName = createNewFileName(extention);
         PutObjectRequest putObjectRequest = new PutObjectRequest(
                 bucket,
-                fileName,
-                multipartFile.getInputStream(), null)
+                newName,
+                multipartFile.getInputStream(),
+                new ObjectMetadata())
                 .withCannedAcl(CannedAccessControlList.PublicRead);
         amazonS3.putObject(putObjectRequest);
-        return fileName;
+        return newName;
+    }
+
+    private String extractExtention(String fileName) {
+        if (fileName == null) {
+            throw new FileUploadFailedException(NO_FILE_NAME);
+        }
+        String[] splitedName = fileName.split("\\.");
+        if (splitedName.length < 2) {
+            throw new FileUploadFailedException(INVALID_FILE_NAME);
+        }
+        return splitedName[splitedName.length - 1];
+    }
+
+    private String createNewFileName(String extention) {
+        return UUID.randomUUID() + "." + extention;
     }
 }

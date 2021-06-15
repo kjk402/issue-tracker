@@ -3,6 +3,7 @@ package com.bas.issuetracker.web.controller;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.bas.issuetracker.web.config.constants.GlobalErrorMessageConstants;
 import com.bas.issuetracker.web.dto.ErrorResponse;
+import com.bas.issuetracker.web.exceptions.FileUploadFailedException;
 import com.bas.issuetracker.web.exceptions.jwt.JwtTokenException;
 import com.bas.issuetracker.web.exceptions.notfound.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,12 @@ import static com.bas.issuetracker.web.config.constants.GlobalErrorMessageConsta
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(FileUploadFailedException.class)
+    public ErrorResponse handleFileUploadFailedException(FileUploadFailedException exception) {
+        return new ErrorResponse(exception.getMessage());
+    }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
