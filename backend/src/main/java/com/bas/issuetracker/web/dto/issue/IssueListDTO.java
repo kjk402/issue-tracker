@@ -1,20 +1,16 @@
 package com.bas.issuetracker.web.dto.issue;
 
+import java.util.List;
+
 public class IssueListDTO {
-    private IssueDTO issueDTO;
-    private UserDTO userDTO;
+    private List<IssuePreviewDTO> issueList;
 
-    public IssueListDTO(IssueDTO issueDTO, UserDTO userDTO) {
-        this.issueDTO = issueDTO;
-        this.userDTO = userDTO;
+    public IssueListDTO(List<IssuePreviewDTO> issueList) {
+        this.issueList = issueList;
     }
 
-    public IssueDTO getIssueDTO() {
-        return issueDTO;
-    }
-
-    public UserDTO getUserDTO() {
-        return userDTO;
+    public List<IssuePreviewDTO> getIssueList() {
+        return issueList;
     }
 
 }

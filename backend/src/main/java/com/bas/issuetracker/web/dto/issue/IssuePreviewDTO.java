@@ -6,16 +6,14 @@ import com.bas.issuetracker.web.dto.milestone.MilestoneInIssue;
 
 import java.util.List;
 
-public class IssueDetailDTO {
+public class IssuePreviewDTO {
     private IssueDTO issueDTO;
-    private List<CommentDTO> commentDTO;
     private List<UserDTO> assignedList;
     private List<LabelPreview> labelList;
     private MilestoneInIssue milestone;
 
-    public IssueDetailDTO(IssueDTO issueDTO, List<CommentDTO> commentDTO, List<UserDTO> assignedList, List<LabelPreview> labelList, MilestoneInIssue milestone) {
+    public IssuePreviewDTO(IssueDTO issueDTO, List<UserDTO> assignedList, List<LabelPreview> labelList, MilestoneInIssue milestone) {
         this.issueDTO = issueDTO;
-        this.commentDTO = commentDTO;
         this.assignedList = assignedList;
         this.labelList = labelList;
         this.milestone = milestone;
@@ -23,10 +21,6 @@ public class IssueDetailDTO {
 
     public IssueDTO getIssueDTO() {
         return issueDTO;
-    }
-
-    public List<CommentDTO> getCommentDTO() {
-        return commentDTO;
     }
 
     public List<UserDTO> getAssignedList() {
@@ -40,4 +34,5 @@ public class IssueDetailDTO {
     public MilestoneInIssue getMilestone() {
         return milestone;
     }
+
 }

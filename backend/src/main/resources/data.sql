@@ -30,6 +30,7 @@ values ('issue1', 1, true, 1, timestamp('2021-06-12 14:03:21')),
 
 insert into assigned (issue_id, user_id)
 values (1, 1),
+       (1, 2),
        (2, 1),
        (4, 1),
        (8, 1),
@@ -50,3 +51,7 @@ values ('comment 1', 1, 1),
        ('comment 10', 1, 3),
        ('comment 11', 1, 3),
        ('comment 12', 1, 3);
+
+insert into issue_label (issue_id, label_id)
+VALUES (1, 1),
+       (1, 2);

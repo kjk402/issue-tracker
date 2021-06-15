@@ -1,39 +1,20 @@
 package com.bas.issuetracker.web.dto.issue;
 
-import java.time.LocalDateTime;
-
 public class IssueDTO {
-    private int id;
-    private String title;
-    private int isOpen;
-    private int commentCount;
-    private LocalDateTime lastModifiedDateTime;
+    private IssueInfo issueInfo;
+    private UserDTO userDTO;
 
-    public IssueDTO(int id, String title, int isOpen, int commentCount, LocalDateTime lastModifiedDateTime) {
-        this.id = id;
-        this.title = title;
-        this.isOpen = isOpen;
-        this.commentCount = commentCount;
-        this.lastModifiedDateTime = lastModifiedDateTime;
+    public IssueDTO(IssueInfo issueInfo, UserDTO userDTO) {
+        this.issueInfo = issueInfo;
+        this.userDTO = userDTO;
     }
 
-    public int getId() {
-        return id;
+    public IssueInfo getIssueInfo() {
+        return issueInfo;
     }
 
-    public String getTitle() {
-        return title;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public int getIsOpen() {
-        return isOpen;
-    }
-
-    public int getCommentCount() {
-        return commentCount;
-    }
-
-    public LocalDateTime getLastModifiedDateTime() {
-        return lastModifiedDateTime;
-    }
 }

@@ -3,6 +3,7 @@ package com.bas.issuetracker.web.service.label;
 import com.bas.issuetracker.web.domain.label.Label;
 import com.bas.issuetracker.web.domain.label.LabelRepository;
 import com.bas.issuetracker.web.dto.label.LabelMetadata;
+import com.bas.issuetracker.web.dto.label.LabelPreview;
 import com.bas.issuetracker.web.dto.label.LabelPreviews;
 import com.bas.issuetracker.web.exceptions.notfound.LabelNotFoundException;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,12 @@ public class LabelService {
 
     private final LabelRepository labelRepository;
     private final LabelDtoConverter labelDtoConverter;
+    private final LabelDAO labelDAO;
 
-    public LabelService(LabelRepository labelRepository, LabelDtoConverter labelDtoConverter) {
+    public LabelService(LabelRepository labelRepository, LabelDtoConverter labelDtoConverter, LabelDAO labelDAO) {
         this.labelRepository = labelRepository;
         this.labelDtoConverter = labelDtoConverter;
+        this.labelDAO = labelDAO;
     }
 
     @Transactional
@@ -51,5 +54,9 @@ public class LabelService {
     public void deleteLabel(int labelId) {
         findLabel(labelId);
         labelRepository.delete(labelId);
+    }
+
+    public List<LabelPreview> findLabelsByIssueId(int issueId) {
+        return labelDAO.showLabelsByIssueId(issueId);
     }
 }

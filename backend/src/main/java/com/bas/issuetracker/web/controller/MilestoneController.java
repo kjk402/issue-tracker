@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(tags = {"Milestone Controller"})
+@Api(tags = {"Milestone API"}, description = "마일스톤 API")
 @RestController
 @RequestMapping("/milestones")
 public class MilestoneController {

@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {"Comment API"})
+@Api(tags = {"Comment API"}, description = "코멘트 API")
 @RestController
 @RequestMapping("/comments")
 public class CommentController {

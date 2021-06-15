@@ -2,15 +2,18 @@ package com.bas.issuetracker.web.service.label;
 
 import com.bas.issuetracker.web.domain.label.Label;
 import com.bas.issuetracker.web.domain.label.LabelRepository;
+import com.bas.issuetracker.web.dto.label.LabelPreview;
 import com.bas.issuetracker.web.service.mapper.LabelMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,4 +77,19 @@ public class LabelDAO implements LabelRepository {
                 .addValue("id", id);
         jdbcTemplate.update(DELETE_LABEL, mapSqlParameterSource);
     }
+
+    public List<LabelPreview> showLabelsByIssueId(int issueId) {
+        List<LabelPreview> labelPreviews = new ArrayList<>();
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("issue_id", issueId);
+        jdbcTemplate.query(FIND_LABELS_BY_ISSUE_ID, sqlParameterSource, (rs, rowNum) ->
+                labelPreviews.add(new LabelPreview(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("description"),
+                        rs.getString("color")
+                )));
+        return labelPreviews;
+    }
+
 }

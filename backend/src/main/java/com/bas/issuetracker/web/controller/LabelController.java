@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(tags = {"Label Controller"})
+@Api(tags = {"Label API"}, description = "라벨 API")
 @RestController
 @RequestMapping("/labels")
 public class LabelController {

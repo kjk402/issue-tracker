@@ -29,3 +29,10 @@ where id = :id;
 const val DELETE_MILESTONE: String = """
 delete from milestone where id = :id;
 """
+
+const val FIND_MILESTONE_BY_ISSUE_ID: String = """
+select m.id, m.title, m.is_open 
+from milestone m
+inner join issue i ON m.id = i.milestone_id
+where i.id = :issue_id;
+"""
