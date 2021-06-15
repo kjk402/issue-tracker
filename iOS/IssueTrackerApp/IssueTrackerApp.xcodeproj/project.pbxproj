@@ -21,6 +21,7 @@
 		E483FE06267498540036DE49 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE05267498540036DE49 /* Endpoint.swift */; };
 		E483FE10267866900036DE49 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE0F267866900036DE49 /* DataTransferService.swift */; };
 		E483FE12267866B00036DE49 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE11267866B00036DE49 /* NetworkService.swift */; };
+		E483FE14267867DD0036DE49 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE13267867DD0036DE49 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E483FE05267498540036DE49 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E483FE0F267866900036DE49 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		E483FE11267866B00036DE49 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E483FE13267867DD0036DE49 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				E44066BA266F2479007C8753 /* AppDelegate.swift */,
 				E44066BC266F2479007C8753 /* SceneDelegate.swift */,
+				E483FE13267867DD0036DE49 /* LoginViewModel.swift */,
 				E44066BE266F2479007C8753 /* LoginViewController.swift */,
 				E483FDE926709C390036DE49 /* IssuesViewController.swift */,
 				E483FDF12671D8880036DE49 /* IssueTableViewCell.swift */,
@@ -193,6 +196,7 @@
 			files = (
 				E483FE12267866B00036DE49 /* NetworkService.swift in Sources */,
 				E483FE10267866900036DE49 /* DataTransferService.swift in Sources */,
+				E483FE14267867DD0036DE49 /* LoginViewModel.swift in Sources */,
 				E483FDEA26709C390036DE49 /* IssuesViewController.swift in Sources */,
 				E483FDF82671F8990036DE49 /* IssueTableViewFooterView.swift in Sources */,
 				E483FE06267498540036DE49 /* Endpoint.swift in Sources */,
