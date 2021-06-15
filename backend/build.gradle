@@ -43,6 +43,9 @@ dependencies {
 
 	//validation
 	implementation('org.springframework.boot:spring-boot-starter-validation')
+
+	//upload
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws'
 }
 
 test {
