@@ -10,6 +10,12 @@ import Combine
 import AuthenticationServices
 
 class LoginViewController: UIViewController {
+    enum Constant {
+        static let scheme = "issuetracker"
+        static let landingTabBarID = "LandingTabBarController"
+        static let buttonCornerRadius: CGFloat = 20.0
+        static let codeParameterKey = "code"
+    }
     @IBOutlet weak var gitHubLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     private var viewModel: LoginViewModel!
@@ -40,10 +46,10 @@ class LoginViewController: UIViewController {
 
     private func configureSession(authURL: URL, completion: @escaping (String) -> Void) {
         let session = ASWebAuthenticationSession(url: authURL,
-                                                 callbackURLScheme: "issuetracker") { callbackURL, error in
+                                                 callbackURLScheme: Constant.scheme) { callbackURL, error in
             guard error == nil, let callbackURL = callbackURL else { return }
             let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems
-            guard let code = queryItems?.filter({ $0.name == "code" }).first?.value else { return }
+            guard let code = queryItems?.filter({ $0.name == Constant.codeParameterKey }).first?.value else { return }
             completion(code)
         }
         session.presentationContextProvider = self
@@ -52,7 +58,7 @@ class LoginViewController: UIViewController {
     }
 
     private func goToLandingPage() {
-        guard let tabBarController = storyboard?.instantiateViewController(identifier: "LandingTabBarController") else {
+        guard let tabBarController = storyboard?.instantiateViewController(identifier: Constant.landingTabBarID) else {
             return
         }
         tabBarController.modalPresentationStyle = .fullScreen
@@ -61,13 +67,13 @@ class LoginViewController: UIViewController {
 
     private func configureGitHubLoginButton() {
         gitHubLoginButton.layer.masksToBounds = false
-        gitHubLoginButton.layer.cornerRadius = 20.0
+        gitHubLoginButton.layer.cornerRadius = Constant.buttonCornerRadius
         gitHubLoginButton.imageView?.contentMode = .scaleAspectFit
     }
 
     private func configureAppleLoginButton() {
         appleLoginButton.layer.masksToBounds = false
-        appleLoginButton.layer.cornerRadius = 20.0
+        appleLoginButton.layer.cornerRadius = Constant.buttonCornerRadius
     }
 
     @IBAction func gitHubLoginButtonPressed(_ sender: UIButton) {
