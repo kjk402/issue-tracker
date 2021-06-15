@@ -200,3 +200,4 @@ $RECYCLE.BIN/
 /src/main/resources/application-secret.properties
 /src/main/resources/dev_secret.properties
 /src/main/resources/secret.properties
+/src/main/resources/aws-config.properties
