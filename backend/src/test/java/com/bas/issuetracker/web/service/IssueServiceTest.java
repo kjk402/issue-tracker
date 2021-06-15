@@ -19,10 +19,16 @@ class IssueServiceTest {
     private IssueService issueService;
 
     @Test
-    @DisplayName("is:open author:@me assignee:@me comment:@me로 검색할 수 있어야 합니다")
+    @DisplayName("필터로 검색할 수 있어야 합니다")
     void testFindIssuesByFilter() {
-        String testcase = "is:open author:@me assignee:@me comment:@me";
-        Integer[] expected = {1, 2};
+        testFilterSearchByTestcase("is:open", new Integer[]{1, 2, 3, 5, 6, 7});
+        testFilterSearchByTestcase("is:open author:@me", new Integer[]{1, 2});
+        testFilterSearchByTestcase("is:open assignee:@me", new Integer[]{1, 2, 3, 7});
+        testFilterSearchByTestcase("is:open comment:@me", new Integer[]{1, 2, 3});
+        testFilterSearchByTestcase("is:open author:@me assignee:@me comment:@me", new Integer[]{1, 2});
+    }
+
+    private void testFilterSearchByTestcase(String testcase, Integer[] expected) {
         SearchFilterData searchFilterData = SearchFilterData.parse(testcase);
         List<Integer> issueIds = issueService.searchIssuesByFilter(searchFilterData, 1);
         assertThat(issueIds).contains(expected);

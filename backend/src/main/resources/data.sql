@@ -35,7 +35,8 @@ values (1, 1),
        (8, 1),
        (3, 2),
        (8, 3),
-       (7, 2);
+       (3, 1),
+       (7, 1);
 
 insert into comment (content, issue_id, author_id, deletable)
 values ('comment 1', 1, 1, false),
