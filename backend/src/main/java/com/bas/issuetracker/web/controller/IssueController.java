@@ -52,5 +52,4 @@ public class IssueController {
     public void changeStateOfIssue(@RequestBody IssueOpenCloseRequest issueOpenCloseRequest) {
         issueService.changeStateOfIssue(issueOpenCloseRequest);
     }
-
 }

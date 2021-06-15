@@ -3,6 +3,7 @@ package com.bas.issuetracker.web.service;
 import com.bas.issuetracker.web.dao.IssueDAO;
 import com.bas.issuetracker.web.dto.comment.CommentDTO;
 import com.bas.issuetracker.web.dto.issue.*;
+import com.bas.issuetracker.web.dto.search.SearchFilterData;
 import com.bas.issuetracker.web.exceptions.IssueException;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,10 @@ public class IssueService {
             booleanOpenOrClose = 1;
         }
         return issueDAO.findIssuesByOpenOrClose(booleanOpenOrClose);
+    }
+
+    public List<Integer> searchIssuesByFilter(SearchFilterData filterData, int userId) {
+        return issueDAO.findIssuesByFilter(filterData, userId);
     }
 
     public void createIssue(int userId, IssueRequestDTO issueRequestDTO) {
