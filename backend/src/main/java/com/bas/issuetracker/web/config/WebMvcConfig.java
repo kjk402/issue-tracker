@@ -37,7 +37,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/milestones/**")
                 .addPathPatterns("/labels/**")
                 .addPathPatterns("/comments/**")
-                .addPathPatterns("/issues/**");
+                .addPathPatterns("/issues/**")
+                .addPathPatterns("/images/**");
     }
 
 }
