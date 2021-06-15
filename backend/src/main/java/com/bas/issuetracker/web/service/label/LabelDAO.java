@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.bas.issuetracker.web.statement.LabelStatementKt.*;
-
 @Service
 @Transactional(readOnly = true)
 public class LabelDAO implements LabelRepository {
@@ -36,7 +34,7 @@ public class LabelDAO implements LabelRepository {
                 .addValue("title", label.getTitle())
                 .addValue("description", label.getDescription())
                 .addValue("color", label.getColor());
-        jdbcTemplate.update(CREATE_LABEL, mapSqlParameterSource, keyHolder);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.LabelStatementKt.CREATE_LABEL, mapSqlParameterSource, keyHolder);
         label.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return label;
     }
@@ -46,7 +44,7 @@ public class LabelDAO implements LabelRepository {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("id", id);
         try {
-            Label label = jdbcTemplate.queryForObject(FIND_LABEL, mapSqlParameterSource, labelMapper);
+            Label label = jdbcTemplate.queryForObject(com.bas.issuetracker.web.queries.LabelStatementKt.FIND_LABEL, mapSqlParameterSource, labelMapper);
             return Optional.ofNullable(label);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -55,7 +53,7 @@ public class LabelDAO implements LabelRepository {
 
     @Override
     public List<Label> findAll() {
-        return jdbcTemplate.query(FIND_LABELS, new MapSqlParameterSource(), labelMapper);
+        return jdbcTemplate.query(com.bas.issuetracker.web.queries.LabelStatementKt.FIND_LABELS, new MapSqlParameterSource(), labelMapper);
     }
 
     @Override
@@ -65,13 +63,13 @@ public class LabelDAO implements LabelRepository {
                 .addValue("title", label.getTitle())
                 .addValue("description", label.getDescription())
                 .addValue("color", label.getColor());
-        jdbcTemplate.update(UPDATE_LABEL, mapSqlParameterSource);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.LabelStatementKt.UPDATE_LABEL, mapSqlParameterSource);
     }
 
     @Override
     public void delete(int id) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("id", id);
-        jdbcTemplate.update(DELETE_LABEL, mapSqlParameterSource);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.LabelStatementKt.DELETE_LABEL, mapSqlParameterSource);
     }
 }

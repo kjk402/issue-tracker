@@ -1,4 +1,4 @@
-package com.bas.issuetracker.web.statement
+package com.bas.issuetracker.web.queries
 
 const val CREATE_LABEL: String = """
 insert into label (title, description, color)

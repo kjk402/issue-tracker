@@ -84,5 +84,14 @@ create table `comment`
     CONSTRAINT fk_comment_user FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
+create table `image`
+(
+    id        int primary key auto_increment,
+    image_url varchar(300),
+    issue_id  int,
+    CONSTRAINT fk_issue_image FOREIGN KEY (issue_id) references issue (id)
+);
+
+
 SET GLOBAL time_zone = '+09:00';
 SET time_zone = '+09:00';

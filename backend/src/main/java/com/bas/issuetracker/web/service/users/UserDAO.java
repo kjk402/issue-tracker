@@ -15,8 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.bas.issuetracker.web.statement.UserStatementKt.*;
-
 @Slf4j
 @Service
 public class UserDAO implements UserRepository {
@@ -39,7 +37,7 @@ public class UserDAO implements UserRepository {
                 .addValue("access_token", user.getAccessToken())
                 .addValue("oauth_id", user.getOauthId())
                 .addValue("authenticated_by", user.getAuthenticatedBy().name());
-        jdbcTemplate.update(SAVE_USER, mapSqlParameterSource, keyHolder);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.UserStatementKt.SAVE_USER, mapSqlParameterSource, keyHolder);
         user.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return user;
     }
@@ -50,7 +48,7 @@ public class UserDAO implements UserRepository {
                 .addValue("authenticated_by", oAuthAuthenticater.name())
                 .addValue("oauth_id", oauthId);
         try {
-            User user = jdbcTemplate.queryForObject(FIND_USER_BY_AUTHENTICATED_BY_AND_OAUTH_ID, mapSqlParameterSource, userMapper);
+            User user = jdbcTemplate.queryForObject(com.bas.issuetracker.web.queries.UserStatementKt.FIND_USER_BY_AUTHENTICATED_BY_AND_OAUTH_ID, mapSqlParameterSource, userMapper);
             return Optional.ofNullable(user);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -62,7 +60,7 @@ public class UserDAO implements UserRepository {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("id", id)
                 .addValue("access_token", newToken);
-        jdbcTemplate.update(UPDATE_TOKEN, mapSqlParameterSource);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.UserStatementKt.UPDATE_TOKEN, mapSqlParameterSource);
     }
 
     @Override
@@ -70,7 +68,7 @@ public class UserDAO implements UserRepository {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("id", userId);
         try {
-            User user = jdbcTemplate.queryForObject(FIND_USER_BY_ID, mapSqlParameterSource, userMapper);
+            User user = jdbcTemplate.queryForObject(com.bas.issuetracker.web.queries.UserStatementKt.FIND_USER_BY_ID, mapSqlParameterSource, userMapper);
             return Optional.ofNullable(user);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();

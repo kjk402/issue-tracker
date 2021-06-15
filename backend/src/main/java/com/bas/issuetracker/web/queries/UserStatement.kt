@@ -1,4 +1,4 @@
-package com.bas.issuetracker.web.statement
+package com.bas.issuetracker.web.queries
 
 const val SAVE_USER: String = """
 insert into `user` (oauth_id, authenticated_by, nickname, name, profile_image, access_token)

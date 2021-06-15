@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.bas.issuetracker.web.statement.MilestoneStatementKt.*;
-
 @Slf4j
 @Service
 public class MilestoneDAO implements MilestoneRepository {
@@ -38,7 +36,7 @@ public class MilestoneDAO implements MilestoneRepository {
                 .addValue("last_modified_date_time", milestone.getLastModifiedDateTime())
                 .addValue("due_to_date", milestone.getDueToDate())
                 .addValue("is_open", milestone.isOpen());
-        jdbcTemplate.update(CREATE_MILESTONE, mapSqlParameterSource, keyHolder);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.MilestoneStatementKt.CREATE_MILESTONE, mapSqlParameterSource, keyHolder);
         milestone.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         return milestone;
     }
@@ -48,7 +46,7 @@ public class MilestoneDAO implements MilestoneRepository {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("id", id);
         try {
-            Milestone milestone = jdbcTemplate.queryForObject(FIND_MILESTONE, mapSqlParameterSource, milestoneMapper);
+            Milestone milestone = jdbcTemplate.queryForObject(com.bas.issuetracker.web.queries.MilestoneStatementKt.FIND_MILESTONE, mapSqlParameterSource, milestoneMapper);
             return Optional.ofNullable(milestone);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -57,7 +55,7 @@ public class MilestoneDAO implements MilestoneRepository {
 
     @Override
     public List<Milestone> findAll() {
-        return jdbcTemplate.query(FIND_MILESTONES, new MapSqlParameterSource(), milestoneMapper);
+        return jdbcTemplate.query(com.bas.issuetracker.web.queries.MilestoneStatementKt.FIND_MILESTONES, new MapSqlParameterSource(), milestoneMapper);
     }
 
     @Override
@@ -68,13 +66,13 @@ public class MilestoneDAO implements MilestoneRepository {
                 .addValue("description", milestone.getDescription())
                 .addValue("due_to_date", milestone.getDueToDate())
                 .addValue("is_open", milestone.isOpen());
-        jdbcTemplate.update(UPDATE_MILESTONE, mapSqlParameterSource);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.MilestoneStatementKt.UPDATE_MILESTONE, mapSqlParameterSource);
     }
 
     @Override
     public void delete(int id) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("id", id);
-        jdbcTemplate.update(DELETE_MILESTONE, mapSqlParameterSource);
+        jdbcTemplate.update(com.bas.issuetracker.web.queries.MilestoneStatementKt.DELETE_MILESTONE, mapSqlParameterSource);
     }
 }
