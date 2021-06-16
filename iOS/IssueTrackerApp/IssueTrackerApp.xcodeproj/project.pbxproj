@@ -17,6 +17,14 @@
 		E483FDF32671D8880036DE49 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FDF12671D8880036DE49 /* IssueTableViewCell.swift */; };
 		E483FDF42671D8880036DE49 /* IssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E483FDF22671D8880036DE49 /* IssueTableViewCell.xib */; };
 		E483FDF82671F8990036DE49 /* IssueTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */; };
+		E483FE042674964D0036DE49 /* LoginQueryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE032674964D0036DE49 /* LoginQueryParameters.swift */; };
+		E483FE06267498540036DE49 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE05267498540036DE49 /* Endpoint.swift */; };
+		E483FE10267866900036DE49 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE0F267866900036DE49 /* DataTransferService.swift */; };
+		E483FE12267866B00036DE49 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE11267866B00036DE49 /* NetworkService.swift */; };
+		E483FE14267867DD0036DE49 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE13267867DD0036DE49 /* LoginViewModel.swift */; };
+		E483FE1626787A2B0036DE49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE1526787A2B0036DE49 /* User.swift */; };
+		E483FE1A267992C50036DE49 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE19267992C50036DE49 /* LandingTabBarController.swift */; };
+		E483FE1C267994480036DE49 /* UIImage+CircleCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE1B267994480036DE49 /* UIImage+CircleCropping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +40,14 @@
 		E483FDF12671D8880036DE49 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		E483FDF22671D8880036DE49 /* IssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueTableViewCell.xib; sourceTree = "<group>"; };
 		E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewFooterView.swift; sourceTree = "<group>"; };
+		E483FE032674964D0036DE49 /* LoginQueryParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQueryParameters.swift; sourceTree = "<group>"; };
+		E483FE05267498540036DE49 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E483FE0F267866900036DE49 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
+		E483FE11267866B00036DE49 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E483FE13267867DD0036DE49 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E483FE1526787A2B0036DE49 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E483FE19267992C50036DE49 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
+		E483FE1B267994480036DE49 /* UIImage+CircleCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CircleCropping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,17 +80,97 @@
 		E44066B9266F2479007C8753 /* IssueTrackerApp */ = {
 			isa = PBXGroup;
 			children = (
-				E44066BA266F2479007C8753 /* AppDelegate.swift */,
-				E44066BC266F2479007C8753 /* SceneDelegate.swift */,
-				E44066BE266F2479007C8753 /* LoginViewController.swift */,
-				E483FDE926709C390036DE49 /* IssuesViewController.swift */,
-				E483FDF12671D8880036DE49 /* IssueTableViewCell.swift */,
-				E483FDF22671D8880036DE49 /* IssueTableViewCell.xib */,
-				E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */,
+				E483FE1D2679BA1E0036DE49 /* Application */,
+				E483FE1E2679BA390036DE49 /* Presentation */,
+				E483FE1F2679BA4D0036DE49 /* Domain */,
+				E483FE202679BA6A0036DE49 /* Network */,
 				E44066C0266F2479007C8753 /* Main.storyboard */,
 				E4C4E002267099860039807B /* Supporting Files */,
 			);
 			path = IssueTrackerApp;
+			sourceTree = "<group>";
+		};
+		E483FE1D2679BA1E0036DE49 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E44066BA266F2479007C8753 /* AppDelegate.swift */,
+				E44066BC266F2479007C8753 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E483FE1E2679BA390036DE49 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E483FE232679BAE50036DE49 /* Login */,
+				E483FE19267992C50036DE49 /* LandingTabBarController.swift */,
+				E483FE242679BAFE0036DE49 /* Issues */,
+				E483FE222679BAC10036DE49 /* Extensions */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E483FE1F2679BA4D0036DE49 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E483FE212679BA7E0036DE49 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E483FE202679BA6A0036DE49 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E483FE0F267866900036DE49 /* DataTransferService.swift */,
+				E483FE11267866B00036DE49 /* NetworkService.swift */,
+				E483FE05267498540036DE49 /* Endpoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E483FE212679BA7E0036DE49 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E483FE032674964D0036DE49 /* LoginQueryParameters.swift */,
+				E483FE1526787A2B0036DE49 /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E483FE222679BAC10036DE49 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E483FE1B267994480036DE49 /* UIImage+CircleCropping.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E483FE232679BAE50036DE49 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E483FE13267867DD0036DE49 /* LoginViewModel.swift */,
+				E44066BE266F2479007C8753 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E483FE242679BAFE0036DE49 /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				E483FDE926709C390036DE49 /* IssuesViewController.swift */,
+				E483FE252679BB190036DE49 /* Cells */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		E483FE252679BB190036DE49 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E483FDF12671D8880036DE49 /* IssueTableViewCell.swift */,
+				E483FDF22671D8880036DE49 /* IssueTableViewCell.xib */,
+				E483FDF72671F8990036DE49 /* IssueTableViewFooterView.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E4C4E002267099860039807B /* Supporting Files */ = {
@@ -179,12 +275,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E483FE12267866B00036DE49 /* NetworkService.swift in Sources */,
+				E483FE10267866900036DE49 /* DataTransferService.swift in Sources */,
+				E483FE14267867DD0036DE49 /* LoginViewModel.swift in Sources */,
 				E483FDEA26709C390036DE49 /* IssuesViewController.swift in Sources */,
 				E483FDF82671F8990036DE49 /* IssueTableViewFooterView.swift in Sources */,
+				E483FE1C267994480036DE49 /* UIImage+CircleCropping.swift in Sources */,
+				E483FE06267498540036DE49 /* Endpoint.swift in Sources */,
+				E483FE042674964D0036DE49 /* LoginQueryParameters.swift in Sources */,
 				E44066BF266F2479007C8753 /* LoginViewController.swift in Sources */,
+				E483FE1626787A2B0036DE49 /* User.swift in Sources */,
 				E483FDF32671D8880036DE49 /* IssueTableViewCell.swift in Sources */,
 				E44066BB266F2479007C8753 /* AppDelegate.swift in Sources */,
 				E44066BD266F2479007C8753 /* SceneDelegate.swift in Sources */,
+				E483FE1A267992C50036DE49 /* LandingTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
