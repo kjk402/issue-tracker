@@ -66,7 +66,7 @@ final class LoginViewModel {
         }
     }
 
-    func requestUserProfile(with code: String) {
+    private func requestUserProfile(with code: String) {
         let parameters = [ParameterKey.code: code]
         let endpoint = Endpoint(baseURL: .api,
                                 path: Path.jwtRequest,
