@@ -6,17 +6,37 @@
 //
 
 import UIKit
+import Combine
 
 class IssuesViewController: UIViewController {
     @IBOutlet weak var issuesTableView: UITableView!
     private var searchController: UISearchController!
+    private var viewModel: IssuesViewModel!
+    private var cancellables: Set<AnyCancellable> = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "이슈"
+        viewModel = makeIssuesViewModel()
+        bindViewModel()
+        viewModel.load()
 
+        navigationItem.title = viewModel.screenTitle
         configureFilterBarButtonItem()
         configureSelectBarButtonItem()
         configureTableView()
+    }
+
+    private func bindViewModel() {
+        viewModel.$issues
+            .dropFirst()
+            .sink { [weak self] _ in
+                self?.issuesTableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+
+    private func makeIssuesViewModel() -> IssuesViewModel {
+        return IssuesViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +93,7 @@ class IssuesViewController: UIViewController {
 
 extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.issues.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +101,7 @@ extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
                                                        for: indexPath) as? IssueTableViewCell else {
             return UITableViewCell()
         }
+        cell.fill(with: viewModel.issues[indexPath.row])
         return cell
     }
 
@@ -115,7 +136,9 @@ extension IssuesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     private func configureAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "정말로 이 이슈를 삭제하시겠습니까?", message: "삭제된 이슈는 복구할 수 없습니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "정말로 이 이슈를 삭제하시겠습니까?",
+                                      message: "삭제된 이슈는 복구할 수 없습니다.",
+                                      preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
         alert.addAction(cancelAction)
