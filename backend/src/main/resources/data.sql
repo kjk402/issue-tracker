@@ -39,26 +39,25 @@ values (1, 1),
        (3, 1),
        (7, 1);
 
-insert into comment (content, issue_id, author_id)
-values
-       ('comment 1', 1, 1),
-       ('comment 2', 1, 1),
-       ('comment 3', 2, 1),
-       ('comment 4', 2, 1),
-       ('comment 5', 3, 1),
-       ('comment 6', 4, 1),
-       ('comment 7', 1, 2),
-       ('comment 8', 1, 2),
-       ('comment 9', 1, 3),
-       ('comment 10', 1, 3),
-       ('comment 11', 1, 3),
-       ('comment 12', 1, 3),
-       ('comment 13', 5, 3),
-       ('comment 14', 6, 3),
-       ('comment 15', 7, 3),
-       ('comment 16', 8, 3),
-       ('comment 17', 9, 3),
-       ('comment 18', 10, 3)
+insert into comment (content, issue_id, author_id, deletable)
+values ('comment 1', 1, 1, false),
+       ('comment 2', 1, 1, true),
+       ('comment 3', 2, 1, false),
+       ('comment 4', 2, 1, true),
+       ('comment 5', 3, 1, false),
+       ('comment 6', 4, 1, false),
+       ('comment 7', 1, 2, true),
+       ('comment 8', 1, 2, true),
+       ('comment 9', 1, 3, true),
+       ('comment 10', 1, 3, true),
+       ('comment 11', 1, 3, true),
+       ('comment 12', 1, 3, true),
+       ('comment 13', 5, 3, false),
+       ('comment 14', 6, 3, false),
+       ('comment 15', 7, 3, false),
+       ('comment 16', 8, 3, false),
+       ('comment 17', 9, 3, false),
+       ('comment 18', 10, 3, false)
 ;
 
 insert into issue_label (issue_id, label_id)
