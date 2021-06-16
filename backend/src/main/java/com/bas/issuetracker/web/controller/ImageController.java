@@ -1,6 +1,6 @@
 package com.bas.issuetracker.web.controller;
 
-import com.bas.issuetracker.web.service.S3FileUploader;
+import com.bas.issuetracker.web.service.file.S3FileUploader;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +24,9 @@ public class ImageController {
     @PostMapping
     public void uploadImage(@RequestParam("file") MultipartFile multipartFile) throws IOException {
         String uploadedFileName = fileUploader.upload(multipartFile);
+        /*@Todo
+        *   업로드된 파일의 URL을 획득하는 기능을 구현해야함
+        *   파일의 URL을 가지고 디비에 저장하는 기능을 구현해야함*/
     }
 
 }
