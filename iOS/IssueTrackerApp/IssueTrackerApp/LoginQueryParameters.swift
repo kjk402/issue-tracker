@@ -11,7 +11,3 @@ struct LoginQueryParameters: Decodable {
     let clientId: String
     let scope: String
 }
-
-struct JWT: Decodable {
-    let accessToken: String
-}

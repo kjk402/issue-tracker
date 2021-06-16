@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
     }
 
     private func bindViewModel() {
-        viewModel.$jwt
+        viewModel.$user
             .dropFirst()
             .sink { [weak self] in
                 print($0)

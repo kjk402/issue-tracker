@@ -29,7 +29,11 @@ final class LoginViewModel {
     }
     private let actions: LoginViewModelActions?
     private let dataTransferService = DataTransferService()
-    @Published var jwt: String = ""
+    @Published var user = User(id: 0,
+                               nickname: "",
+                               name: "",
+                               profileImage: "",
+                               accessToken: "")
 
     init(actions: LoginViewModelActions? = nil) {
         self.actions = actions
@@ -58,22 +62,22 @@ final class LoginViewModel {
                                 queryParameters: parameters)
         guard let authURL = try? endpoint.url() else { return }
         self.actions?.configureSession(authURL) { code in
-            self.requestJWT(with: code)
+            self.requestUserProfile(with: code)
         }
     }
 
-    func requestJWT(with code: String) {
+    func requestUserProfile(with code: String) {
         let parameters = [ParameterKey.code: code]
         let endpoint = Endpoint(baseURL: .api,
                                 path: Path.jwtRequest,
                                 method: .get,
                                 headerParamaters: [ParameterKey.userAgent: ParameterValue.userAgent],
                                 queryParameters: parameters)
-        dataTransferService.request(with: endpoint) { (result: Result<JWT, DataTransferError>) in
+        dataTransferService.request(with: endpoint) { (result: Result<User, DataTransferError>) in
             switch result {
             case .success(let response):
-                self.jwt = response.accessToken
-                self.actions?.goToLandingPage()
+                self.user = response
+                self.actions?.goToLandingPage(response)
             case .failure(let error):
                 print(error.localizedDescription)
             }
