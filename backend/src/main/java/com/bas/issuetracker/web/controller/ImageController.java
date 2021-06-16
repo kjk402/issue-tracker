@@ -23,9 +23,8 @@ public class ImageController {
 
     @PostMapping
     public void uploadImage(@RequestParam("file") MultipartFile multipartFile) throws IOException {
-        String uploadedFileName = fileUploader.upload(multipartFile);
+        String uploadedFileUrl = fileUploader.upload(multipartFile);
         /*@Todo
-        *   업로드된 파일의 URL을 획득하는 기능을 구현해야함
         *   파일의 URL을 가지고 디비에 저장하는 기능을 구현해야함*/
     }
 

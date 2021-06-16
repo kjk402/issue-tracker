@@ -40,7 +40,11 @@ public class S3FileUploader {
                 new ObjectMetadata())
                 .withCannedAcl(CannedAccessControlList.PublicRead);
         amazonS3.putObject(putObjectRequest);
-        return newName;
+        return buildS3ObjectUrl(newName);
+    }
+
+    private String buildS3ObjectUrl(String fileName) {
+        return amazonS3.getUrl(bucket, fileName).toString();
     }
 
     private void verifyExtention(String extention) {
