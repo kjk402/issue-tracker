@@ -1,6 +1,8 @@
 package com.bas.issuetracker.web.controller;
 
+import com.bas.issuetracker.web.dto.image.ImageDTO;
 import com.bas.issuetracker.web.service.file.S3FileUploader;
+import com.bas.issuetracker.web.service.image.ImageService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,16 +18,17 @@ import java.io.IOException;
 public class ImageController {
 
     private final S3FileUploader fileUploader;
+    private final ImageService imageService;
 
-    public ImageController(S3FileUploader fileUploader) {
+    public ImageController(S3FileUploader fileUploader, ImageService imageService) {
         this.fileUploader = fileUploader;
+        this.imageService = imageService;
     }
 
     @PostMapping
-    public void uploadImage(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+    public ImageDTO uploadImage(@RequestParam("file") MultipartFile multipartFile) throws IOException {
         String uploadedFileUrl = fileUploader.upload(multipartFile);
-        /*@Todo
-        *   파일의 URL을 가지고 디비에 저장하는 기능을 구현해야함*/
+        return imageService.createImage(uploadedFileUrl);
     }
 
 }

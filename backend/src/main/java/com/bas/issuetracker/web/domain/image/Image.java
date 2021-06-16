@@ -10,6 +10,10 @@ public class Image {
     private int issueId;
     private String imageUrl;
 
+    public Image(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public void updateId(int id) {
         this.id = id;
     }
