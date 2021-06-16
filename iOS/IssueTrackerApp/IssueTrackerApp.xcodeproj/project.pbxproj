@@ -25,6 +25,8 @@
 		E483FE1626787A2B0036DE49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE1526787A2B0036DE49 /* User.swift */; };
 		E483FE1A267992C50036DE49 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE19267992C50036DE49 /* LandingTabBarController.swift */; };
 		E483FE1C267994480036DE49 /* UIImage+CircleCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE1B267994480036DE49 /* UIImage+CircleCropping.swift */; };
+		E483FE272679D57B0036DE49 /* IssuesMockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE262679D57B0036DE49 /* IssuesMockJSON.swift */; };
+		E483FE292679D75C0036DE49 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE282679D75C0036DE49 /* Issue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		E483FE1526787A2B0036DE49 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E483FE19267992C50036DE49 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
 		E483FE1B267994480036DE49 /* UIImage+CircleCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CircleCropping.swift"; sourceTree = "<group>"; };
+		E483FE262679D57B0036DE49 /* IssuesMockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesMockJSON.swift; sourceTree = "<group>"; };
+		E483FE282679D75C0036DE49 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				E483FE1F2679BA4D0036DE49 /* Domain */,
 				E483FE202679BA6A0036DE49 /* Network */,
 				E44066C0266F2479007C8753 /* Main.storyboard */,
+				E483FE262679D57B0036DE49 /* IssuesMockJSON.swift */,
 				E4C4E002267099860039807B /* Supporting Files */,
 			);
 			path = IssueTrackerApp;
@@ -133,6 +138,7 @@
 			children = (
 				E483FE032674964D0036DE49 /* LoginQueryParameters.swift */,
 				E483FE1526787A2B0036DE49 /* User.swift */,
+				E483FE282679D75C0036DE49 /* Issue.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 				E483FDF82671F8990036DE49 /* IssueTableViewFooterView.swift in Sources */,
 				E483FE1C267994480036DE49 /* UIImage+CircleCropping.swift in Sources */,
 				E483FE06267498540036DE49 /* Endpoint.swift in Sources */,
+				E483FE272679D57B0036DE49 /* IssuesMockJSON.swift in Sources */,
 				E483FE042674964D0036DE49 /* LoginQueryParameters.swift in Sources */,
 				E44066BF266F2479007C8753 /* LoginViewController.swift in Sources */,
 				E483FE1626787A2B0036DE49 /* User.swift in Sources */,
@@ -289,6 +296,7 @@
 				E44066BB266F2479007C8753 /* AppDelegate.swift in Sources */,
 				E44066BD266F2479007C8753 /* SceneDelegate.swift in Sources */,
 				E483FE1A267992C50036DE49 /* LandingTabBarController.swift in Sources */,
+				E483FE292679D75C0036DE49 /* Issue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
