@@ -28,9 +28,11 @@ public class CommentDAO {
                 .addValue("issue_id", issueId);
         namedParameterJdbcTemplate.query(SELECT_COMMENT_BY_ISSUE_ID, sqlParameterSource, (rs, rowNum) ->
                 commentDTOS.add(new CommentDTO(
+                        rs.getInt("id"),
                         rs.getString("content"),
                         rs.getTimestamp("last_modified_date_time").toLocalDateTime(),
                         new UserDTO(
+                                rs.getInt("user_id"),
                                 rs.getString("nickname"),
                                 rs.getString("name"),
                                 rs.getString("profile_image")

@@ -2,8 +2,10 @@ package com.bas.issuetracker.web.service.milestone;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.domain.milestone.MilestoneRepository;
+import com.bas.issuetracker.web.dto.milestone.MilestoneInIssue;
 import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
 import com.bas.issuetracker.web.dto.milestone.MilestonePreviews;
+import com.bas.issuetracker.web.exceptions.IssueException;
 import com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +20,12 @@ public class MilestoneService {
 
     private final MilestoneRepository milestoneRepository;
     private final MilestoneDtoConverter milestoneDtoConverter;
+    private final MilestoneDAO milestoneDAO;
 
-    public MilestoneService(MilestoneRepository milestoneRepository, MilestoneDtoConverter milestoneDtoConverter) {
+    public MilestoneService(MilestoneRepository milestoneRepository, MilestoneDtoConverter milestoneDtoConverter, MilestoneDAO milestoneDAO) {
         this.milestoneRepository = milestoneRepository;
         this.milestoneDtoConverter = milestoneDtoConverter;
+        this.milestoneDAO = milestoneDAO;
     }
 
     @Transactional
@@ -68,4 +72,9 @@ public class MilestoneService {
         findMilestone(milestoneId);
         milestoneRepository.delete(milestoneId);
     }
+
+    public MilestoneInIssue findMilestoneByIssueId(int issueId) {
+        return milestoneDAO.findMilestoneByIssueId(issueId);
+    }
+
 }

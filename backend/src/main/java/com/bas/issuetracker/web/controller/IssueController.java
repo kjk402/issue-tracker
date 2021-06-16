@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = {"Issue API"})
+@Api(tags = {"Issue API"}, description = "이슈 API")
 @RestController
 @RequestMapping("/issues")
 public class IssueController {
@@ -24,7 +24,7 @@ public class IssueController {
 
     @GetMapping
     @ApiOperation(value = "이슈 리스트 보기", notes = "open, close 별로 이슈 목록 조회")
-    public List<IssueListDTO> showIssueList(@ApiParam(value = "열린 이슈 OR 닫힌 이슈 조회", example = "open") @RequestParam String openOrClose) {
+    public List<IssueDTO> showIssueList(@ApiParam(value = "열린 이슈 OR 닫힌 이슈 조회", example = "open") @RequestParam String openOrClose) {
         return issueService.showIssuesByOpenOrClose(openOrClose);
     }
 
@@ -52,4 +52,28 @@ public class IssueController {
     public void changeStateOfIssue(@RequestBody IssueOpenCloseRequest issueOpenCloseRequest) {
         issueService.changeStateOfIssue(issueOpenCloseRequest);
     }
+
+    @GetMapping("/list")
+    public IssueListDTO showList(@RequestParam List<Integer> issueIds) {
+        return issueService.showIssueList(issueIds);
+    }
+
+    @PostMapping("/assigned")
+    @ApiOperation(value = "담당자 적용하기", notes = "이슈에 담당자 적용하기")
+    public void applyAssignedToIssue(@RequestBody IssueAssignedRequest issueAssignedRequest) {
+        issueService.applyAssignedToIssue(issueAssignedRequest);
+    }
+
+    @PostMapping("/label")
+    @ApiOperation(value = "라벨 적용하기", notes = "이슈에 라벨 적용하기")
+    public void applyLabelToIssue(@RequestBody IssueLabelRequest issueLabelRequest) {
+        issueService.applyLabelToIssue(issueLabelRequest);
+    }
+
+    @PostMapping("/milestone")
+    @ApiOperation(value = "마일스톤 적용하기", notes = "이슈에 마일스톤 적용하기")
+    public void applyMilestoneToIssue(@RequestBody IssueMilestoneRequest issueMilestoneRequest) {
+        issueService.applyMilestoneToIssue(issueMilestoneRequest);
+    }
+
 }

@@ -23,3 +23,16 @@ update user
 set access_token = :access_token
 where id = :id;
 """
+
+const val FIND_USERS_BY_ASSIGNED_ID: String= """
+SELECT u.id AS user_id, u.nickname, u.name, u.profile_image
+FROM user u
+inner JOIN assigned ON assigned.user_id = u.id
+inner JOIN issue i ON i.id = assigned.issue_id
+WHERE i.id = :issue_id AND u.id = assigned.user_id;
+"""
+
+const val FIND_ALL_USERS: String = """
+SELECT u.id AS user_id, u.nickname, u.name, u.profile_image
+FROM user u
+"""

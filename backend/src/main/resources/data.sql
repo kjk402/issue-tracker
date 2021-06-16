@@ -30,6 +30,7 @@ values ('issue1', 1, true, 1, timestamp('2021-06-12 14:03:21')),
 
 insert into assigned (issue_id, user_id)
 values (1, 1),
+       (1, 2),
        (2, 1),
        (4, 1),
        (8, 1),
@@ -38,16 +39,20 @@ values (1, 1),
        (3, 1),
        (7, 1);
 
-insert into comment (content, issue_id, author_id, deletable)
-values ('comment 1', 1, 1, false),
-       ('comment 2', 1, 1, true),
-       ('comment 3', 2, 1, false),
-       ('comment 4', 2, 1, true),
-       ('comment 5', 3, 1, false),
-       ('comment 6', 4, 1, false),
-       ('comment 7', 1, 2, true),
-       ('comment 8', 1, 2, true),
-       ('comment 9', 1, 3, true),
-       ('comment 10', 1, 3, true),
-       ('comment 11', 1, 3, true),
-       ('comment 12', 1, 3, true);
+insert into comment (content, issue_id, author_id)
+values ('comment 1', 1, 1),
+       ('comment 2', 1, 1),
+       ('comment 3', 2, 1),
+       ('comment 4', 2, 1),
+       ('comment 5', 3, 1),
+       ('comment 6', 4, 1),
+       ('comment 7', 1, 2),
+       ('comment 8', 1, 2),
+       ('comment 9', 1, 3),
+       ('comment 10', 1, 3),
+       ('comment 11', 1, 3),
+       ('comment 12', 1, 3);
+
+insert into issue_label (issue_id, label_id)
+VALUES (1, 1),
+       (1, 2);

@@ -27,3 +27,11 @@ where id = :id;
 const val DELETE_LABEL: String = """
 delete from label where id = :id;
 """
+
+const val FIND_LABELS_BY_ISSUE_ID: String= """
+SELECT l.id, l.title, l.description, l.color
+FROM label l
+inner JOIN issue_label ON issue_label.label_id = l.id
+inner JOIN issue i ON i.id = issue_label.issue_id
+WHERE i.id = :issue_id AND l.id = issue_label.label_id;
+"""

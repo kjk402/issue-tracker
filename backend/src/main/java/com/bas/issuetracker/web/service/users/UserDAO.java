@@ -3,17 +3,23 @@ package com.bas.issuetracker.web.service.users;
 import com.bas.issuetracker.web.domain.user.OAuthAuthenticater;
 import com.bas.issuetracker.web.domain.user.User;
 import com.bas.issuetracker.web.domain.user.UserRepository;
+import com.bas.issuetracker.web.dto.issue.UserDTO;
 import com.bas.issuetracker.web.service.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import static com.bas.issuetracker.web.queries.UserStatementKt.*;
 
 @Slf4j
 @Service
@@ -74,4 +80,31 @@ public class UserDAO implements UserRepository {
             return Optional.empty();
         }
     }
+
+    public List<UserDTO> findAllUsers() {
+        List<UserDTO> userDTOS = new ArrayList<>();
+        jdbcTemplate.query(FIND_ALL_USERS, (rs, rowNum)->
+                userDTOS.add(new UserDTO(
+                        rs.getInt("user_id"),
+                        rs.getString("nickname"),
+                        rs.getString("name"),
+                        rs.getString("profile_image")
+                )));
+        return userDTOS;
+    }
+
+    public List<UserDTO> findUsersByAssignedIssue(int issueId) {
+        List<UserDTO> userDTOS = new ArrayList<>();
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("issue_id", issueId);
+        jdbcTemplate.query(FIND_USERS_BY_ASSIGNED_ID, sqlParameterSource, (rs, rowNum)->
+                userDTOS.add(new UserDTO(
+                        rs.getInt("user_id"),
+                        rs.getString("nickname"),
+                        rs.getString("name"),
+                        rs.getString("profile_image")
+                )));
+        return userDTOS;
+    }
+
 }

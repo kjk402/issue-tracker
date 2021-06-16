@@ -2,11 +2,13 @@ package com.bas.issuetracker.web.service.milestone;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.domain.milestone.MilestoneRepository;
+import com.bas.issuetracker.web.dto.milestone.MilestoneInIssue;
 import com.bas.issuetracker.web.service.mapper.MilestoneMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import static com.bas.issuetracker.web.queries.MilestoneStatementKt.*;
 
 @Slf4j
 @Service
@@ -75,4 +79,20 @@ public class MilestoneDAO implements MilestoneRepository {
                 .addValue("id", id);
         jdbcTemplate.update(com.bas.issuetracker.web.queries.MilestoneStatementKt.DELETE_MILESTONE, mapSqlParameterSource);
     }
+
+    public MilestoneInIssue findMilestoneByIssueId(int issueId) {
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("issue_id", issueId);
+        List<MilestoneInIssue> milestone = jdbcTemplate.query(FIND_MILESTONE_BY_ISSUE_ID, sqlParameterSource, (rs, rowNum) ->
+                new MilestoneInIssue(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getBoolean("is_open")
+                ));
+        if (milestone.isEmpty()) {
+            return null;
+        }
+        return milestone.get(0);
+    }
+
 }

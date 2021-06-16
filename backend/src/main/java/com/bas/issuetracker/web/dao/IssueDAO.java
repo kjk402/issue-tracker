@@ -1,7 +1,7 @@
 package com.bas.issuetracker.web.dao;
 
+import com.bas.issuetracker.web.dto.issue.IssueInfo;
 import com.bas.issuetracker.web.dto.issue.IssueDTO;
-import com.bas.issuetracker.web.dto.issue.IssueListDTO;
 import com.bas.issuetracker.web.dto.issue.IssueRequestDTO;
 import com.bas.issuetracker.web.dto.issue.UserDTO;
 import com.bas.issuetracker.web.dto.search.SearchFilterData;
@@ -30,41 +30,43 @@ public class IssueDAO {
         this.commentDAO = commentDAO;
     }
 
-    public Optional<IssueListDTO> findIssueById(int issueId) {
+    public Optional<IssueDTO> findIssueById(int issueId) {
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("issue_id", issueId);
-        List<IssueListDTO> issueListDTOS = namedParameterJdbcTemplate.query(SELECT_ISSUE_DETAIL, sqlParameterSource, (rs, rowNum) ->
-                new IssueListDTO(new IssueDTO(rs.getInt("id"),
+        List<IssueDTO> issueDTOS = namedParameterJdbcTemplate.query(SELECT_ISSUE_DETAIL, sqlParameterSource, (rs, rowNum) ->
+                new IssueDTO(new IssueInfo(rs.getInt("id"),
                         rs.getString("title"),
-                        rs.getInt("is_open"),
+                        rs.getBoolean("is_open"),
                         rs.getInt("comment_count"),
                         rs.getTimestamp("last_modified_date_time").toLocalDateTime()),
                         new UserDTO(
+                                rs.getInt("user_id"),
                                 rs.getString("nickname"),
                                 rs.getString("name"),
                                 rs.getString("profile_image")
                         )));
-        return issueListDTOS.stream().findFirst();
+        return issueDTOS.stream().findFirst();
     }
 
-    public List<IssueListDTO> findIssuesByOpenOrClose(int openOrClose) {
-        List<IssueListDTO> issueListDTOS = new ArrayList<>();
+    public List<IssueDTO> findIssuesByOpenOrClose(int openOrClose) {
+        List<IssueDTO> issueDTOS = new ArrayList<>();
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("open_or_close", openOrClose);
         namedParameterJdbcTemplate.query(SELECT_MULTIPLE_ISSUE, sqlParameterSource, (rs, rowMum) ->
-                issueListDTOS.add(new IssueListDTO(
-                        new IssueDTO(rs.getInt("id"),
+                issueDTOS.add(new IssueDTO(
+                        new IssueInfo(rs.getInt("id"),
                                 rs.getString("title"),
-                                rs.getInt("is_open"),
+                                rs.getBoolean("is_open"),
                                 rs.getInt("comment_count"),
                                 rs.getTimestamp("last_modified_date_time").toLocalDateTime()),
                         new UserDTO(
+                                rs.getInt("user_id"),
                                 rs.getString("nickname"),
                                 rs.getString("name"),
                                 rs.getString("profile_image")
                         )
                 )));
-        return issueListDTOS;
+        return issueDTOS;
     }
 
     public List<Integer> findIssuesByFilter(SearchFilterData filter, int searcherId) {
@@ -109,16 +111,19 @@ public class IssueDAO {
     public int saveIssueAndComment(int userId, IssueRequestDTO issueRequestDTO) {
         int issueId = createIssue(userId, issueRequestDTO);
         commentDAO.createComment(userId, issueId, issueRequestDTO.getComment(), false);
+        applyLabelsToIssue(issueId, issueRequestDTO.getLabelIds());
+        applyAssignedToIssue(issueId, issueRequestDTO.getAssignedUserIds());
         return issueId;
     }
 
     public int createIssue(int userId, IssueRequestDTO issueRequestDTO) {
-        String sql = "INSERT INTO issue (title, author_id, is_open, last_modified_date_time)" +
-                "VALUES (:title, :author_id, :is_open, :last_modified_date_time)";
+        String sql = "INSERT INTO issue (title, author_id, is_open, milestone_id,last_modified_date_time)" +
+                "VALUES (:title, :author_id, :is_open, :milestone_id, :last_modified_date_time)";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("title", issueRequestDTO.getTitle())
                 .addValue("author_id", userId)
                 .addValue("is_open", true)
+                .addValue("milestone_id", issueRequestDTO.getMilestoneId())
                 .addValue("last_modified_date_time", LocalDateTime.now());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, sqlParameterSource, keyHolder, new String[]{"ID"});
@@ -140,4 +145,49 @@ public class IssueDAO {
                 .addValue("issue_ids", issueIds);
         namedParameterJdbcTemplate.update(sql, sqlParameterSource);
     }
+
+    public void deleteLabelToIssue(int issueId) {
+        String sql = "DELETE FROM issue_label WHERE issue_id = :issue_id";
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("issue_id", issueId);
+        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+    }
+
+    public void applyLabelsToIssue(int issueId, List<Integer> labelIds) {
+        String sql = "INSERT INTO issue_label (issue_id, label_id)" +
+                "VALUES (:issue_id, :label_id)";
+        for (int labelId : labelIds) {
+            SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                    .addValue("issue_id", issueId)
+                    .addValue("label_id", labelId);
+            namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        }
+    }
+
+    public void updateMilestoneToIssue(int issueId, int milestoneId) {
+        String sql = "UPDATE issue SET milestone_id = :milestone_id WHERE id = :issue_id";
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("milestone_id", milestoneId)
+                .addValue("issue_id", issueId);
+        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+    }
+
+    public void deleteAssignedToIssue(int issueId) {
+        String sql = "DELETE FROM assigned WHERE issue_id = :issue_id";
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("issue_id", issueId);
+        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+    }
+
+    public void applyAssignedToIssue(int issueId, List<Integer> userIds) {
+        String sql = "INSERT INTO assigned (issue_id, user_id)" +
+                "VALUES (:issue_id, :user_id)";
+        for (int userId : userIds) {
+            SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                    .addValue("issue_id", issueId)
+                    .addValue("user_id", userId);
+            namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        }
+    }
+
 }
