@@ -9,7 +9,7 @@ import Foundation
 
 struct LoginViewModelActions {
     let configureSession: (URL, @escaping (String) -> Void) -> Void
-    let goToLandingPage: () -> Void
+    let goToLandingPage: (User) -> Void
 }
 
 final class LoginViewModel {

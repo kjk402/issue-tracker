@@ -57,12 +57,14 @@ class LoginViewController: UIViewController {
         session.start()
     }
 
-    private func goToLandingPage() {
-        guard let tabBarController = storyboard?.instantiateViewController(identifier: Constant.landingTabBarID) else {
+    private func goToLandingPage(with userProfile: User) {
+        guard let landingTabBarController = storyboard?
+                .instantiateViewController(identifier: Constant.landingTabBarID) as? LandingTabBarController else {
             return
         }
-        tabBarController.modalPresentationStyle = .fullScreen
-        self.present(tabBarController, animated: true, completion: nil)
+        landingTabBarController.user = userProfile
+        landingTabBarController.modalPresentationStyle = .fullScreen
+        self.present(landingTabBarController, animated: true, completion: nil)
     }
 
     private func configureGitHubLoginButton() {
