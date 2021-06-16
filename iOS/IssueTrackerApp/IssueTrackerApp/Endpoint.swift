@@ -27,17 +27,20 @@ class Endpoint {
     private let method: HTTPMethodType
     private let headerParamaters: [String: String]
     private let queryParameters: [String: Any]
+    let responseDecoder: ResponseDecoder
 
     init(baseURL: BaseURL? = nil,
          path: String,
          method: HTTPMethodType,
          headerParamaters: [String: String] = [:],
-         queryParameters: [String: Any] = [:]) {
+         queryParameters: [String: Any] = [:],
+         responseDecoder: ResponseDecoder = JSONResponseDecoder()) {
         self.baseURL = baseURL
         self.path = path
         self.method = method
         self.headerParamaters = headerParamaters
         self.queryParameters = queryParameters
+        self.responseDecoder = responseDecoder
     }
 
     func urlRequest() throws -> URLRequest {
