@@ -3,6 +3,7 @@ package com.bas.issuetracker.web.controller;
 
 import com.bas.issuetracker.web.config.annotation.CertifiedUser;
 import com.bas.issuetracker.web.dto.issue.*;
+import com.bas.issuetracker.web.dto.search.SearchFilter;
 import com.bas.issuetracker.web.service.IssueService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,9 +24,14 @@ public class IssueController {
     }
 
     @GetMapping
-    @ApiOperation(value = "이슈 리스트 보기", notes = "open, close 별로 이슈 목록 조회")
-    public List<IssueDTO> showIssueList(@ApiParam(value = "열린 이슈 OR 닫힌 이슈 조회", example = "open") @RequestParam String openOrClose) {
-        return issueService.showIssuesByOpenOrClose(openOrClose);
+    @ApiOperation(value = "이슈 리스트 보기", notes = "검색필터로 이슈 목록 조회")
+    public IssueListDTO showIssueList(
+            @ApiParam(value = "검색필터", example = "is:open") @RequestParam String searchFilter,
+            @ApiParam(required = false, hidden = true) @CertifiedUser int userId
+    ) {
+        SearchFilter filter = SearchFilter.parse(searchFilter);
+        List<Integer> issueIds = issueService.searchIssuesByFilter(filter, userId);
+        return issueService.showIssueList(issueIds);
     }
 
     @GetMapping("/detail")

@@ -5,7 +5,7 @@ import com.bas.issuetracker.web.dto.comment.CommentDTO;
 import com.bas.issuetracker.web.dto.issue.*;
 import com.bas.issuetracker.web.dto.label.LabelPreview;
 import com.bas.issuetracker.web.dto.milestone.MilestoneInIssue;
-import com.bas.issuetracker.web.dto.search.SearchFilterData;
+import com.bas.issuetracker.web.dto.search.SearchFilter;
 import com.bas.issuetracker.web.exceptions.IssueException;
 import com.bas.issuetracker.web.service.label.LabelService;
 import com.bas.issuetracker.web.service.milestone.MilestoneService;
@@ -63,7 +63,7 @@ public class IssueService {
         return issueDAO.findIssuesByOpenOrClose(booleanOpenOrClose);
     }
 
-    public List<Integer> searchIssuesByFilter(SearchFilterData filterData, int userId) {
+    public List<Integer> searchIssuesByFilter(SearchFilter filterData, int userId) {
         return issueDAO.findIssuesByFilter(filterData, userId);
     }
 

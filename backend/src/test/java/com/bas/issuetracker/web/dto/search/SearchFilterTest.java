@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static com.bas.issuetracker.web.config.constants.SearchFilterConstants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SearchFilterDataTest {
+class SearchFilterTest {
 
     @Test
     @DisplayName("문자열 검색필터를 객체로 변환할 수 있어야 합니다")
@@ -22,26 +22,26 @@ class SearchFilterDataTest {
                 CLOSED_ISSUE + " " + COMMENT_BY_ME,
                 OPENED_ISSUE + " " + AUTHOR_IS_ME + " " + ASSIGNEE_IS_ME + " " + COMMENT_BY_ME,
         };
-        SearchFilterData[] expecteds = {
-                new SearchFilterData(true, false, false, false),
-                new SearchFilterData(false, false, false, false),
-                new SearchFilterData(true, true, false, false),
-                new SearchFilterData(true, false, true, false),
-                new SearchFilterData(true, false, false, true),
-                new SearchFilterData(false, true, false, false),
-                new SearchFilterData(false, false, true, false),
-                new SearchFilterData(false, false, false, true),
-                new SearchFilterData(true, true, true, true),
+        SearchFilter[] expecteds = {
+                new SearchFilter(true, false, false, false),
+                new SearchFilter(false, false, false, false),
+                new SearchFilter(true, true, false, false),
+                new SearchFilter(true, false, true, false),
+                new SearchFilter(true, false, false, true),
+                new SearchFilter(false, true, false, false),
+                new SearchFilter(false, false, true, false),
+                new SearchFilter(false, false, false, true),
+                new SearchFilter(true, true, true, true),
         };
         testParseWithTestcase(testcases, expecteds);
     }
 
-    private void testParseWithTestcase(String[] testcases, SearchFilterData[] expecteds) {
+    private void testParseWithTestcase(String[] testcases, SearchFilter[] expecteds) {
         for (int i = 0; i < testcases.length; i++) {
             String testcase = testcases[i];
-            SearchFilterData expected = expecteds[i];
-            SearchFilterData searchFilterData = SearchFilterData.parse(testcase);
-            assertThat(searchFilterData.equals(expected)).isTrue();
+            SearchFilter expected = expecteds[i];
+            SearchFilter searchFilter = SearchFilter.parse(testcase);
+            assertThat(searchFilter.equals(expected)).isTrue();
         }
     }
 }

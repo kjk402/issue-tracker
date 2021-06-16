@@ -1,6 +1,6 @@
 package com.bas.issuetracker.web.service;
 
-import com.bas.issuetracker.web.dto.search.SearchFilterData;
+import com.bas.issuetracker.web.dto.search.SearchFilter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,8 @@ class IssueServiceTest {
     }
 
     private void testFilterSearchByTestcase(String testcase, Integer[] expected) {
-        SearchFilterData searchFilterData = SearchFilterData.parse(testcase);
-        List<Integer> issueIds = issueService.searchIssuesByFilter(searchFilterData, 1);
+        SearchFilter searchFilter = SearchFilter.parse(testcase);
+        List<Integer> issueIds = issueService.searchIssuesByFilter(searchFilter, 1);
         assertThat(issueIds).contains(expected);
     }
 }

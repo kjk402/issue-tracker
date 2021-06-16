@@ -4,7 +4,7 @@ import com.bas.issuetracker.web.dto.issue.IssueInfo;
 import com.bas.issuetracker.web.dto.issue.IssueDTO;
 import com.bas.issuetracker.web.dto.issue.IssueRequestDTO;
 import com.bas.issuetracker.web.dto.issue.UserDTO;
-import com.bas.issuetracker.web.dto.search.SearchFilterData;
+import com.bas.issuetracker.web.dto.search.SearchFilter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -69,7 +69,7 @@ public class IssueDAO {
         return issueDTOS;
     }
 
-    public List<Integer> findIssuesByFilter(SearchFilterData filter, int searcherId) {
+    public List<Integer> findIssuesByFilter(SearchFilter filter, int searcherId) {
         MapSqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue("is_open", filter.isOpen());
         StringBuilder query = new StringBuilder()
@@ -87,21 +87,21 @@ public class IssueDAO {
         return namedParameterJdbcTemplate.query(query, parameter, (rs, rowNum) -> rs.getInt("i.id"));
     }
 
-    private void appendAssigneeIsMe(StringBuilder query, SearchFilterData filter, MapSqlParameterSource parameter, int myId) {
+    private void appendAssigneeIsMe(StringBuilder query, SearchFilter filter, MapSqlParameterSource parameter, int myId) {
         if (filter.isAssigneeIsMe()) {
             query.append(FILTER_PART_ASSIGNED_BY_ME);
             parameter.addValue("assigned_user_id", myId);
         }
     }
 
-    private void appendCommentByMe(StringBuilder query, SearchFilterData filter, MapSqlParameterSource parameter, int myId) {
+    private void appendCommentByMe(StringBuilder query, SearchFilter filter, MapSqlParameterSource parameter, int myId) {
         if (filter.isCommentByMe()) {
             query.append(FILTER_PART_COMMENT_BY_ME);
             parameter.addValue("comment_author_id", myId);
         }
     }
 
-    private void appendAuthorIsMe(StringBuilder query, SearchFilterData filter, MapSqlParameterSource parameter, int myId) {
+    private void appendAuthorIsMe(StringBuilder query, SearchFilter filter, MapSqlParameterSource parameter, int myId) {
         if (filter.isAuthorIsMe()) {
             query.append(FILTER_PART_ISSUE_AUTHOR);
             parameter.addValue("issue_author_id", myId);

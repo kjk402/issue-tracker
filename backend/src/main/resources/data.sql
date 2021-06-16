@@ -40,7 +40,8 @@ values (1, 1),
        (7, 1);
 
 insert into comment (content, issue_id, author_id)
-values ('comment 1', 1, 1),
+values
+       ('comment 1', 1, 1),
        ('comment 2', 1, 1),
        ('comment 3', 2, 1),
        ('comment 4', 2, 1),
@@ -51,7 +52,14 @@ values ('comment 1', 1, 1),
        ('comment 9', 1, 3),
        ('comment 10', 1, 3),
        ('comment 11', 1, 3),
-       ('comment 12', 1, 3);
+       ('comment 12', 1, 3),
+       ('comment 13', 5, 3),
+       ('comment 14', 6, 3),
+       ('comment 15', 7, 3),
+       ('comment 16', 8, 3),
+       ('comment 17', 9, 3),
+       ('comment 18', 10, 3)
+;
 
 insert into issue_label (issue_id, label_id)
 VALUES (1, 1),

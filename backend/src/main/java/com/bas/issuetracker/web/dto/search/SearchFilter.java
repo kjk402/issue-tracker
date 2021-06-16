@@ -11,16 +11,16 @@ import static com.bas.issuetracker.web.config.constants.SearchFilterConstants.*;
 @Getter
 @Builder
 @AllArgsConstructor
-public class SearchFilterData {
+public class SearchFilter {
 
     private boolean isOpen = true;
     private boolean authorIsMe = false;
     private boolean assigneeIsMe = false;
     private boolean commentByMe = false;
 
-    public static SearchFilterData parse(String stringFilter) {
+    public static SearchFilter parse(String stringFilter) {
         String[] filters = stringFilter.split(" ");
-        SearchFilterDataBuilder builder = new SearchFilterDataBuilder();
+        SearchFilterBuilder builder = new SearchFilterBuilder();
         for (String filter : filters) {
             switch (filter) {
                 case OPENED_ISSUE :
@@ -47,7 +47,7 @@ public class SearchFilterData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SearchFilterData that = (SearchFilterData) o;
+        SearchFilter that = (SearchFilter) o;
         return isOpen == that.isOpen && authorIsMe == that.authorIsMe && assigneeIsMe == that.assigneeIsMe && commentByMe == that.commentByMe;
     }
 
