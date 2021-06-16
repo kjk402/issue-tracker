@@ -264,10 +264,10 @@
             </objects>
             <point key="canvasLocation" x="3097.1014492753625" y="2248.6607142857142"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Landing Tab Bar Controller-->
         <scene sceneID="pNm-q4-K4N">
             <objects>
-                <tabBarController storyboardIdentifier="LandingTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="B4g-PU-v45" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="LandingTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="B4g-PU-v45" customClass="LandingTabBarController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HZi-32-oqX">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
