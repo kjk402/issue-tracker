@@ -55,21 +55,12 @@ public class IssueService {
         return new IssuePreviewDTO(issueDAO.findIssueById(issueId).orElseThrow(() -> new IssueException("이슈없습니다.")), assignedList, labelList, milestone);
     }
 
-    public List<IssueDTO> showIssuesByOpenOrClose(String openOrClose) {
-        int booleanOpenOrClose = 0;
-        if (openOrClose.equals("open")) {
-            booleanOpenOrClose = 1;
-        }
-        return issueDAO.findIssuesByOpenOrClose(booleanOpenOrClose);
-    }
-
     public List<Integer> searchIssuesByFilter(SearchFilter filterData, int userId) {
         return issueDAO.findIssuesByFilter(filterData, userId);
     }
 
     public void createIssue(int userId, IssueRequestDTO issueRequestDTO) {
-        int issueId = issueDAO.saveIssueAndComment(userId, issueRequestDTO);
-
+        issueDAO.saveIssueAndComment(userId, issueRequestDTO);
     }
 
     public void changeTitleOfIssue(IssueTitleRequest issueTitleRequest) {
@@ -79,10 +70,7 @@ public class IssueService {
     public void changeStateOfIssue(IssueOpenCloseRequest issueOpenCloseRequest) {
         List<Integer> issueIds = issueOpenCloseRequest.getIssueIds();
         String state = issueOpenCloseRequest.getStateToChange();
-        boolean isOpen = true;
-        if (state.equals("close")) {
-            isOpen = false;
-        }
+        boolean isOpen = !state.equals("close");
         issueDAO.changeStateOfIssue(issueIds, isOpen);
     }
 

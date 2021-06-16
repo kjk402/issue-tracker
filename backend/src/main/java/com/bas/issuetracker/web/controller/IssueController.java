@@ -59,11 +59,6 @@ public class IssueController {
         issueService.changeStateOfIssue(issueOpenCloseRequest);
     }
 
-    @GetMapping("/list")
-    public IssueListDTO showList(@RequestParam List<Integer> issueIds) {
-        return issueService.showIssueList(issueIds);
-    }
-
     @PostMapping("/assigned")
     @ApiOperation(value = "담당자 적용하기", notes = "이슈에 담당자 적용하기")
     public void applyAssignedToIssue(@RequestBody IssueAssignedRequest issueAssignedRequest) {

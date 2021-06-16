@@ -48,27 +48,6 @@ public class IssueDAO {
         return issueDTOS.stream().findFirst();
     }
 
-    public List<IssueDTO> findIssuesByOpenOrClose(int openOrClose) {
-        List<IssueDTO> issueDTOS = new ArrayList<>();
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
-                .addValue("open_or_close", openOrClose);
-        namedParameterJdbcTemplate.query(SELECT_MULTIPLE_ISSUE, sqlParameterSource, (rs, rowMum) ->
-                issueDTOS.add(new IssueDTO(
-                        new IssueInfo(rs.getInt("id"),
-                                rs.getString("title"),
-                                rs.getBoolean("is_open"),
-                                rs.getInt("comment_count"),
-                                rs.getTimestamp("last_modified_date_time").toLocalDateTime()),
-                        new UserDTO(
-                                rs.getInt("user_id"),
-                                rs.getString("nickname"),
-                                rs.getString("name"),
-                                rs.getString("profile_image")
-                        )
-                )));
-        return issueDTOS;
-    }
-
     public List<Integer> findIssuesByFilter(SearchFilter filter, int searcherId) {
         MapSqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue("is_open", filter.isOpen());
