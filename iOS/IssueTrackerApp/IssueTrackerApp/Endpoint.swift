@@ -22,13 +22,13 @@ enum RequestGenerationError: Error {
 }
 
 class Endpoint {
-    private let baseURL: BaseURL
+    private let baseURL: BaseURL?
     private let path: String
     private let method: HTTPMethodType
     private let headerParamaters: [String: String]
     private let queryParameters: [String: Any]
 
-    init(baseURL: BaseURL,
+    init(baseURL: BaseURL? = nil,
          path: String,
          method: HTTPMethodType,
          headerParamaters: [String: String] = [:],
@@ -49,7 +49,12 @@ class Endpoint {
     }
 
     func url() throws -> URL {
-        let endpoint = "\(baseURL.rawValue)\(path)"
+        let endpoint: String
+        if let baseURL = baseURL {
+            endpoint = "\(baseURL.rawValue)\(path)"
+        } else {
+            endpoint = path
+        }
 
         guard var urlComponents = URLComponents(string: endpoint) else {
             throw RequestGenerationError.components
