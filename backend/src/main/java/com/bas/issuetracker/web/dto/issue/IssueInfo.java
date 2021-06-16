@@ -3,22 +3,22 @@ package com.bas.issuetracker.web.dto.issue;
 import java.time.LocalDateTime;
 
 public class IssueInfo {
-    private int id;
+    private int issueId;
     private String title;
     private boolean isOpen;
     private int commentCount;
     private LocalDateTime lastModifiedDateTime;
 
-    public IssueInfo(int id, String title, boolean isOpen, int commentCount, LocalDateTime lastModifiedDateTime) {
-        this.id = id;
+    public IssueInfo(int issueId, String title, boolean isOpen, int commentCount, LocalDateTime lastModifiedDateTime) {
+        this.issueId = issueId;
         this.title = title;
         this.isOpen = isOpen;
         this.commentCount = commentCount;
         this.lastModifiedDateTime = lastModifiedDateTime;
     }
 
-    public int getId() {
-        return id;
+    public int getIssueId() {
+        return issueId;
     }
 
     public String getTitle() {

@@ -21,7 +21,7 @@ public class LabelDtoConverter {
 
     public LabelPreview labelToLabelPreview(Label label) {
         return LabelPreview.builder()
-                .id(label.getId())
+                .labelId(label.getId())
                 .title(label.getTitle())
                 .description(label.getDescription())
                 .color(label.getColor())

@@ -21,7 +21,7 @@ public class MilestoneDtoConverter {
 
     public MilestonePreview milestoneToMilestonePreview(Milestone milestone) {
         return MilestonePreview.builder()
-                .id(milestone.getId())
+                .milestoneId(milestone.getId())
                 .title(milestone.getTitle())
                 .description(milestone.getDescription())
                 .lastModifiedDateTime(milestone.getLastModifiedDateTime())

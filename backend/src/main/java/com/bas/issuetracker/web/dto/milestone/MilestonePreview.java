@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 public class MilestonePreview {
-    private int id;
+    private int milestoneId;
     private String title;
     private String description;
     private LocalDateTime lastModifiedDateTime;

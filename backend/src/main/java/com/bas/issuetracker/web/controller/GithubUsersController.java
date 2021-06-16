@@ -63,7 +63,6 @@ public class GithubUsersController {
         return oauthDataService.showGithubOAuthData(userAgent);
     }
 
-
     @GetMapping
     @ApiOperation(value = "find All users", notes = "모든 유저들을 불러옵니다.")
     public List<UserDTO> findAllUsers() {

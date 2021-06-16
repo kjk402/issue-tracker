@@ -1,18 +1,18 @@
 package com.bas.issuetracker.web.dto.milestone;
 
 public class MilestoneInIssue {
-    private int id;
+    private int milestoneId;
     private String title;
     private boolean isOpen;
 
-    public MilestoneInIssue(int id, String title, boolean isOpen) {
-        this.id = id;
+    public MilestoneInIssue(int milestoneId, String title, boolean isOpen) {
+        this.milestoneId = milestoneId;
         this.title = title;
         this.isOpen = isOpen;
     }
 
-    public int getId() {
-        return id;
+    public int getMilestoneId() {
+        return milestoneId;
     }
 
     public String getTitle() {

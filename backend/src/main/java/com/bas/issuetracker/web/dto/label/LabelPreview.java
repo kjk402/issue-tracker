@@ -6,15 +6,16 @@ import lombok.Getter;
 @Getter
 @Builder
 public class LabelPreview {
-    private int id;
+    private int labelId;
     private String title;
     private String description;
     private String color;
 
-    public LabelPreview(int id, String title, String description, String color) {
-        this.id = id;
+    public LabelPreview(int labelId, String title, String description, String color) {
+        this.labelId = labelId;
         this.title = title;
         this.description = description;
         this.color = color;
     }
+
 }
