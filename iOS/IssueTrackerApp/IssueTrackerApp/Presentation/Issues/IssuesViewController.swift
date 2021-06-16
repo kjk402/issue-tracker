@@ -52,8 +52,17 @@ class IssuesViewController: UIViewController {
         button.sizeToFit()
         button.imageView?.contentMode = .scaleAspectFit
         button.contentEdgeInsets = UIEdgeInsets(top: 13.0, left: 0.0, bottom: 13.0, right: 0.0)
+        button.addTarget(self, action: #selector(showFilters), for: .touchUpInside)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+
+    @objc
+    func showFilters() {
+        let filterVC = FilterSelectionTableViewController(style: .grouped)
+        let navigationController = UINavigationController(rootViewController: filterVC)
+        navigationController.modalPresentationStyle = .automatic
+        present(navigationController, animated: true)
     }
 
     private func configureSelectBarButtonItem() {

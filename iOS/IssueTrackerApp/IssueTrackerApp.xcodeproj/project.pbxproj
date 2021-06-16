@@ -29,6 +29,7 @@
 		E483FE292679D75C0036DE49 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE282679D75C0036DE49 /* Issue.swift */; };
 		E483FE2F2679E50D0036DE49 /* IssuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE2E2679E50C0036DE49 /* IssuesViewModel.swift */; };
 		E483FE312679E5310036DE49 /* IssueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE302679E5310036DE49 /* IssueViewModel.swift */; };
+		E483FE332679E6EF0036DE49 /* FilterSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE322679E6EF0036DE49 /* FilterSelectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E483FE282679D75C0036DE49 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		E483FE2E2679E50C0036DE49 /* IssuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewModel.swift; sourceTree = "<group>"; };
 		E483FE302679E5310036DE49 /* IssueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewModel.swift; sourceTree = "<group>"; };
+		E483FE322679E6EF0036DE49 /* FilterSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				E483FE2E2679E50C0036DE49 /* IssuesViewModel.swift */,
 				E483FE302679E5310036DE49 /* IssueViewModel.swift */,
 				E483FDE926709C390036DE49 /* IssuesViewController.swift */,
+				E483FE322679E6EF0036DE49 /* FilterSelectionTableViewController.swift */,
 				E483FE252679BB190036DE49 /* Cells */,
 			);
 			path = Issues;
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E483FE12267866B00036DE49 /* NetworkService.swift in Sources */,
+				E483FE332679E6EF0036DE49 /* FilterSelectionTableViewController.swift in Sources */,
 				E483FE10267866900036DE49 /* DataTransferService.swift in Sources */,
 				E483FE14267867DD0036DE49 /* LoginViewModel.swift in Sources */,
 				E483FDEA26709C390036DE49 /* IssuesViewController.swift in Sources */,
