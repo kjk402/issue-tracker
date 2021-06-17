@@ -83,10 +83,36 @@ class FilterSelectionTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return viewModel.sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.sections[section].filters.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let filterViewModel = viewModel.sections[indexPath.section].filters[indexPath.row]
+        return fillCell(with: filterViewModel)
+    }
+
+    private func fillCell(with viewModel: FilterViewModel) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "filterCell")
+        cell.textLabel?.text = viewModel.name
+        cell.textLabel?.font = viewModel.isSelected ? UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+            : UIFont.systemFont(ofSize: 17.0)
+        cell.accessoryType = viewModel.isSelected ? .checkmark : .none
+        cell.tintColor = #colorLiteral(red: 0.2039215686, green: 0.7803921569, blue: 0.3490196078, alpha: 1)
+        cell.selectionStyle = .none
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.sections[section].headerTitle
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath)
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
