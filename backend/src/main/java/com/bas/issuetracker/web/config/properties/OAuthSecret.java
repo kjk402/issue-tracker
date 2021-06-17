@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 @ToString
 @Configuration
 @ConfigurationProperties(prefix = "secret")
-@PropertySource(value = "classpath:dev_secret.properties")
+@PropertySource(value = "classpath:secret.properties")
 public class OAuthSecret {
     private String clientIdKey;
     private String clientSecretKey;

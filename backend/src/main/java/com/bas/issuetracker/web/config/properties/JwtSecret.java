@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @ToString
 @Configuration
 @ConfigurationProperties(prefix = "jwt")
-@PropertySource(value = "classpath:dev_secret.properties")
+@PropertySource(value = "classpath:secret.properties")
 public class JwtSecret {
     private String issuer;
     private String secretKey;
