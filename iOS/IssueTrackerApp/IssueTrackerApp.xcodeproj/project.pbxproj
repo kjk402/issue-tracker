@@ -30,6 +30,7 @@
 		E483FE2F2679E50D0036DE49 /* IssuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE2E2679E50C0036DE49 /* IssuesViewModel.swift */; };
 		E483FE312679E5310036DE49 /* IssueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE302679E5310036DE49 /* IssueViewModel.swift */; };
 		E483FE332679E6EF0036DE49 /* FilterSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE322679E6EF0036DE49 /* FilterSelectionTableViewController.swift */; };
+		E483FE35267A1C450036DE49 /* FilterSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483FE34267A1C450036DE49 /* FilterSelectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		E483FE2E2679E50C0036DE49 /* IssuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewModel.swift; sourceTree = "<group>"; };
 		E483FE302679E5310036DE49 /* IssueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewModel.swift; sourceTree = "<group>"; };
 		E483FE322679E6EF0036DE49 /* FilterSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionTableViewController.swift; sourceTree = "<group>"; };
+		E483FE34267A1C450036DE49 /* FilterSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				E483FE2E2679E50C0036DE49 /* IssuesViewModel.swift */,
 				E483FE302679E5310036DE49 /* IssueViewModel.swift */,
 				E483FDE926709C390036DE49 /* IssuesViewController.swift */,
+				E483FE34267A1C450036DE49 /* FilterSelectionViewModel.swift */,
 				E483FE322679E6EF0036DE49 /* FilterSelectionTableViewController.swift */,
 				E483FE252679BB190036DE49 /* Cells */,
 			);
@@ -307,6 +310,7 @@
 				E44066BB266F2479007C8753 /* AppDelegate.swift in Sources */,
 				E44066BD266F2479007C8753 /* SceneDelegate.swift in Sources */,
 				E483FE2F2679E50D0036DE49 /* IssuesViewModel.swift in Sources */,
+				E483FE35267A1C450036DE49 /* FilterSelectionViewModel.swift in Sources */,
 				E483FE1A267992C50036DE49 /* LandingTabBarController.swift in Sources */,
 				E483FE292679D75C0036DE49 /* Issue.swift in Sources */,
 			);
