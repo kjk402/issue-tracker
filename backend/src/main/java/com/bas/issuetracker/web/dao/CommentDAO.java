@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +43,14 @@ public class CommentDAO {
     }
 
     public void createComment(int userId, int issueId, String content, boolean deletable) {
-        String sql = "INSERT INTO comment (content, issue_id, author_id, deletable)" +
-                "VALUES (:content, :issue_id, :author_id, :deletable)";
+        String sql = "INSERT INTO comment (content, issue_id, author_id, deletable, last_modified_date_time)" +
+                "VALUES (:content, :issue_id, :author_id, :deletable, :last_modified_date_time)";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("content", content)
                 .addValue("issue_id", issueId)
                 .addValue("author_id", userId)
-                .addValue("deletable", deletable);
+                .addValue("deletable", deletable)
+                .addValue("last_modified_date_time", LocalDateTime.now());
         namedParameterJdbcTemplate.update(sql, sqlParameterSource);
     }
 
