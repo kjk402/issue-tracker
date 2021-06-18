@@ -43,37 +43,32 @@ public class CommentDAO {
     }
 
     public void createComment(int userId, int issueId, String content, boolean deletable) {
-        String sql = "INSERT INTO comment (content, issue_id, author_id, deletable, last_modified_date_time)" +
-                "VALUES (:content, :issue_id, :author_id, :deletable, :last_modified_date_time)";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("content", content)
                 .addValue("issue_id", issueId)
                 .addValue("author_id", userId)
                 .addValue("deletable", deletable)
                 .addValue("last_modified_date_time", LocalDateTime.now());
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(CREATE_COMMENT, sqlParameterSource);
     }
 
     public void updateComment(int commentId, String content) {
-        String sql = "UPDATE comment SET content =:content WHERE id =:comment_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("content", content)
                 .addValue("comment_id", commentId);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(UPDATE_COMMENT, sqlParameterSource);
     }
 
     public int findDeletableOfCommentById(int commentId) {
-        String sql = "SELECT deletable FROM comment WHERE id =:comment_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("comment_id", commentId);
-        return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, Integer.class);
+        return namedParameterJdbcTemplate.queryForObject(FIND_DELETABLE_COMMENT, sqlParameterSource, Integer.class);
     }
 
     public void deleteComment(int commentId) {
-        String sql = "DELETE c FROM comment c WHERE c.id=:comment_id AND c.deletable = 1";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("comment_id", commentId);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(DELETE_COMMENT, sqlParameterSource);
     }
 
 }
