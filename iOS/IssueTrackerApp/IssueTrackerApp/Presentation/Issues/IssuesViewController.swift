@@ -45,16 +45,10 @@ class IssuesViewController: UIViewController {
     }
 
     private func configureFilterBarButtonItem() {
-        let button = UIButton(type: .system)
-        let filterImage = UIImage(systemName: "line.horizontal.3.decrease")
-        button.setImage(filterImage, for: .normal)
-        button.setTitle("필터", for: .normal)
-        button.sizeToFit()
-        button.imageView?.contentMode = .scaleAspectFit
-        button.contentEdgeInsets = UIEdgeInsets(top: 13.0, left: 0.0, bottom: 13.0, right: 0.0)
-        button.addTarget(self, action: #selector(showFilters), for: .touchUpInside)
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "필터",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(showFilters))
     }
 
     @objc
@@ -66,16 +60,10 @@ class IssuesViewController: UIViewController {
     }
 
     private func configureSelectBarButtonItem() {
-        let button = UIButton(type: .system)
-        let checkmarkImage = UIImage(systemName: "checkmark.circle")
-        button.setImage(checkmarkImage, for: .normal)
-        button.setTitle("선택", for: .normal)
-        button.sizeToFit()
-        button.imageView?.contentMode = .scaleAspectFit
-        button.contentEdgeInsets = UIEdgeInsets(top: 13.0, left: 0.0, bottom: 13.0, right: 0.0)
-        button.semanticContentAttribute = .forceRightToLeft
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "선택",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: nil)
     }
 
     private func configureTableView() {

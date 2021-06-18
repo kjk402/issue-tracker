@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
         static let buttonCornerRadius: CGFloat = 20.0
         static let codeParameterKey = "code"
     }
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var gitHubLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     private var viewModel: LoginViewModel!
@@ -26,6 +28,8 @@ class LoginViewController: UIViewController {
         viewModel = makeLoginViewModel()
         bindViewModel()
 
+        configureDynamicFont(of: loginButton)
+        configureDynamicFont(of: signUpButton)
         configureGitHubLoginButton()
         configureAppleLoginButton()
     }
@@ -67,13 +71,20 @@ class LoginViewController: UIViewController {
         self.present(landingTabBarController, animated: true, completion: nil)
     }
 
+    private func configureDynamicFont(of button: UIButton) {
+        button.titleLabel?.font = UIFont.preferredFont(for: .callout, weight: .semibold)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+    }
+
     private func configureGitHubLoginButton() {
+        gitHubLoginButton.titleLabel?.adjustsFontForContentSizeCategory = true
         gitHubLoginButton.layer.masksToBounds = false
         gitHubLoginButton.layer.cornerRadius = Constant.buttonCornerRadius
         gitHubLoginButton.imageView?.contentMode = .scaleAspectFit
     }
 
     private func configureAppleLoginButton() {
+        appleLoginButton.titleLabel?.adjustsFontForContentSizeCategory = true
         appleLoginButton.layer.masksToBounds = false
         appleLoginButton.layer.cornerRadius = Constant.buttonCornerRadius
     }

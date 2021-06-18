@@ -29,8 +29,11 @@ class FilterSelectionTableViewController: UITableViewController {
                 makeFilterViewModel(name: "닫힌 이슈", isSelected: false)
             ]),
             makeSectionViewModel(headerTitle: "작성자", filters: [
-                makeFilterViewModel(name: "JK", isSelected: false),
-                makeFilterViewModel(name: "Honux", isSelected: false)
+                makeFilterViewModel(name: "Nas", isSelected: false),
+                makeFilterViewModel(name: "Bat", isSelected: false),
+                makeFilterViewModel(name: "Dico", isSelected: false),
+                makeFilterViewModel(name: "ppamppam", isSelected: false),
+                makeFilterViewModel(name: "Song", isSelected: false)
             ]),
             makeSectionViewModel(headerTitle: "레이블", filters: [
                 makeFilterViewModel(name: "레이블 없음", isSelected: false),
@@ -54,15 +57,10 @@ class FilterSelectionTableViewController: UITableViewController {
     }
 
     private func configureCancelBarButtonItem() {
-        let button = UIButton(type: .system)
-        let image = UIImage(systemName: "chevron.backward")
-        button.setImage(image, for: .normal)
-        button.setTitle("취소", for: .normal)
-        button.sizeToFit()
-        button.imageView?.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(cancel), for: .touchUpInside)
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cancel))
     }
 
     @objc
@@ -71,13 +69,10 @@ class FilterSelectionTableViewController: UITableViewController {
     }
 
     private func configureSaveBarButtonItem() {
-        let button = UIButton(type: .system)
-        button.setTitle("저장", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
-        button.sizeToFit()
-        button.imageView?.contentMode = .scaleAspectFit
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: nil)
     }
 
     // MARK: - Table view data source
@@ -98,8 +93,9 @@ class FilterSelectionTableViewController: UITableViewController {
     private func fillCell(with viewModel: FilterViewModel) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "filterCell")
         cell.textLabel?.text = viewModel.name
-        cell.textLabel?.font = viewModel.isSelected ? UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-            : UIFont.systemFont(ofSize: 17.0)
+        cell.textLabel?.font = viewModel.isSelected ? UIFont.preferredFont(forTextStyle: .headline)
+            : UIFont.preferredFont(forTextStyle: .body)
+        cell.textLabel?.adjustsFontForContentSizeCategory = true
         cell.accessoryType = viewModel.isSelected ? .checkmark : .none
         cell.tintColor = #colorLiteral(red: 0.2039215686, green: 0.7803921569, blue: 0.3490196078, alpha: 1)
         cell.selectionStyle = .none
