@@ -14,6 +14,10 @@
     - [Bat](https://github.com/kjk402)
     - [Nas](https://github.com/Malloc72P)
 
+### 배포 주소
+| 구분 | 주소 | 
+| ---- | ---- |
+|  BE  | http://ec2-13-124-158-166.ap-northeast-2.compute.amazonaws.com/api/swagger-ui.html |
 
 ### 브랜치 관리 규칙
 GitHub의 이슈와 프로젝트를 적극적으로 사용하자.
