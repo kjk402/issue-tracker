@@ -28,4 +28,11 @@ class IssueTableViewCell: UITableViewCell {
         labelBackgroundView.layer.masksToBounds = true
         labelBackgroundView.layer.cornerRadius = 14.0
     }
+
+    func fill(with viewModel: IssueViewModel) {
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        milestoneLabel.text = viewModel.milestone
+        labelLabel.text = viewModel.label
+    }
 }
