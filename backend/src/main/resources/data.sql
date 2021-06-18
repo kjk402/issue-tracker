@@ -9,10 +9,10 @@ VALUES ('backend', 'backend description', '#c2e0c6'),
        ('front', 'front description', '#AE72E0');
 
 insert into user (id, oauth_id, authenticated_by, nickname, name, profile_image, access_token)
-values (1, '1111', 'GITHUB', 'tester', 'tester', 'no-image', ''),
-       (2, '456', 'GITHUB', 'tester2', 'test2', 'test2.img', ''),
-       (3, '789', 'GITHUB', 'tester3', 'test3', 'test3.img', ''),
-       (4, '000', 'GITHUB', 'tester4', 'test4', 'test4.img', '')
+values (1, '1111', 'GITHUB', 'tester', 'tester', 'https://avatars.githubusercontent.com/u/59398492?v=4', ''),
+       (2, '456', 'GITHUB', 'tester2', 'test2', 'https://avatars.githubusercontent.com/u/59312492?v=3', ''),
+       (3, '789', 'GITHUB', 'tester3', 'test3', 'https://avatars.githubusercontent.com/u/784237?v=3', ''),
+       (4, '000', 'GITHUB', 'tester4', 'test4', 'https://avatars.githubusercontent.com/u/79631237?v=3', '')
 ;
 
 insert into issue (title, author_id, is_open, milestone_id, last_modified_date_time)

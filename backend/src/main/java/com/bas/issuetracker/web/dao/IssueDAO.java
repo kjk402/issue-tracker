@@ -96,8 +96,6 @@ public class IssueDAO {
     }
 
     public int createIssue(int userId, IssueRequestDTO issueRequestDTO) {
-        String sql = "INSERT INTO issue (title, author_id, is_open, milestone_id,last_modified_date_time)" +
-                "VALUES (:title, :author_id, :is_open, :milestone_id, :last_modified_date_time)";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("title", issueRequestDTO.getTitle())
                 .addValue("author_id", userId)
@@ -105,67 +103,58 @@ public class IssueDAO {
                 .addValue("milestone_id", issueRequestDTO.getMilestoneId())
                 .addValue("last_modified_date_time", LocalDateTime.now());
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource, keyHolder, new String[]{"ID"});
+        namedParameterJdbcTemplate.update(CREATE_ISSUE, sqlParameterSource, keyHolder, new String[]{"ID"});
         return keyHolder.getKey().intValue();
     }
 
     public void changeTitleOfIssue(int issueId, String title) {
-        String sql = "UPDATE issue SET title = :title WHERE id = :issue_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("title", title)
                 .addValue("issue_id", issueId);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(UPDATE_ISSUE, sqlParameterSource);
     }
 
     public void changeStateOfIssue(List<Integer> issueIds, boolean state) {
-        String sql = "UPDATE issue SET is_open = :state WHERE id IN (:issue_ids)";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("state", state)
                 .addValue("issue_ids", issueIds);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(OPEN_OR_CLOSE_ISSUE, sqlParameterSource);
     }
 
     public void deleteLabelToIssue(int issueId) {
-        String sql = "DELETE FROM issue_label WHERE issue_id = :issue_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("issue_id", issueId);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(DISCONNECT_LABEL, sqlParameterSource);
     }
 
     public void applyLabelsToIssue(int issueId, List<Integer> labelIds) {
-        String sql = "INSERT INTO issue_label (issue_id, label_id)" +
-                "VALUES (:issue_id, :label_id)";
         for (int labelId : labelIds) {
             SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                     .addValue("issue_id", issueId)
                     .addValue("label_id", labelId);
-            namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+            namedParameterJdbcTemplate.update(CONNECT_LABEL, sqlParameterSource);
         }
     }
 
     public void updateMilestoneToIssue(int issueId, int milestoneId) {
-        String sql = "UPDATE issue SET milestone_id = :milestone_id WHERE id = :issue_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("milestone_id", milestoneId)
                 .addValue("issue_id", issueId);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(UPDATE_MILESTONE_ISSUE, sqlParameterSource);
     }
 
     public void deleteAssignedToIssue(int issueId) {
-        String sql = "DELETE FROM assigned WHERE issue_id = :issue_id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                 .addValue("issue_id", issueId);
-        namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+        namedParameterJdbcTemplate.update(DISCONNECT_ASSIGNED, sqlParameterSource);
     }
 
     public void applyAssignedToIssue(int issueId, List<Integer> userIds) {
-        String sql = "INSERT INTO assigned (issue_id, user_id)" +
-                "VALUES (:issue_id, :user_id)";
         for (int userId : userIds) {
             SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
                     .addValue("issue_id", issueId)
                     .addValue("user_id", userId);
-            namedParameterJdbcTemplate.update(sql, sqlParameterSource);
+            namedParameterJdbcTemplate.update(CONNECT_ASSIGNED, sqlParameterSource);
         }
     }
 
