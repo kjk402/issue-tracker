@@ -157,5 +157,4 @@ public class IssueDAO {
             namedParameterJdbcTemplate.update(CONNECT_ASSIGNED, sqlParameterSource);
         }
     }
-
 }

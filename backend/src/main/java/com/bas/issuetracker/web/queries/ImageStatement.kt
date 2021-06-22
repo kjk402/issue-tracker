@@ -18,3 +18,10 @@ from image
 where issue_id = :issue_id
 """
 
+const val UPDATE_ISSUE_ID: String = """
+update image
+set
+    issue_id = :issue_id
+where id = :image_id;
+"""
+

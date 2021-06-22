@@ -1,12 +1,14 @@
 package com.bas.issuetracker.web.service;
 
 import com.bas.issuetracker.web.dao.IssueDAO;
+import com.bas.issuetracker.web.domain.image.ImageRepository;
 import com.bas.issuetracker.web.dto.comment.CommentDTO;
 import com.bas.issuetracker.web.dto.issue.*;
 import com.bas.issuetracker.web.dto.label.LabelPreview;
 import com.bas.issuetracker.web.dto.milestone.MilestoneInIssue;
 import com.bas.issuetracker.web.dto.search.SearchFilter;
 import com.bas.issuetracker.web.exceptions.IssueException;
+import com.bas.issuetracker.web.service.image.ImageService;
 import com.bas.issuetracker.web.service.label.LabelService;
 import com.bas.issuetracker.web.service.milestone.MilestoneService;
 import com.bas.issuetracker.web.service.users.UserService;
@@ -23,13 +25,15 @@ public class IssueService {
     private final LabelService labelService;
     private final UserService userService;
     private final MilestoneService milestoneService;
+    private final ImageService imageService;
 
-    public IssueService(IssueDAO issueDAO, CommentService commentService, LabelService labelService, UserService userService, MilestoneService milestoneService) {
+    public IssueService(IssueDAO issueDAO, CommentService commentService, LabelService labelService, UserService userService, MilestoneService milestoneService, ImageService imageService) {
         this.issueDAO = issueDAO;
         this.commentService = commentService;
         this.labelService = labelService;
         this.userService = userService;
         this.milestoneService = milestoneService;
+        this.imageService = imageService;
     }
 
     public IssueDetailDTO showIssueDetail(int issueId) {
@@ -60,7 +64,10 @@ public class IssueService {
     }
 
     public void createIssue(int userId, IssueRequestDTO issueRequestDTO) {
-        issueDAO.saveIssueAndComment(userId, issueRequestDTO);
+        int issueId = issueDAO.saveIssueAndComment(userId, issueRequestDTO);
+        for (int imageId : issueRequestDTO.getImageIds()) {
+            imageService.updateImage(imageId, issueId);
+        }
     }
 
     public void changeTitleOfIssue(IssueTitleRequest issueTitleRequest) {
