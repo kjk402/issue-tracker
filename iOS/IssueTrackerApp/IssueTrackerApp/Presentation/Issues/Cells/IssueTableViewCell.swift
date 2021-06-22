@@ -17,11 +17,18 @@ class IssueTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        configureTitleLabel()
         configureLabelBackgroundView()
     }
 
     static func nib() -> UINib {
         return UINib(nibName: reuseIdentifier, bundle: nil)
+    }
+
+    private func configureTitleLabel() {
+        titleLabel.font = UIFont.preferredFont(for: .title2, weight: .bold)
+        titleLabel.adjustsFontForContentSizeCategory = true
     }
 
     private func configureLabelBackgroundView() {

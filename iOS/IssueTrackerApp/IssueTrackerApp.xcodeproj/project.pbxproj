@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E43988CA267C8744004610EC /* UIFont+PreferredFontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43988C9267C8744004610EC /* UIFont+PreferredFontWeight.swift */; };
 		E44066BB266F2479007C8753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44066BA266F2479007C8753 /* AppDelegate.swift */; };
 		E44066BD266F2479007C8753 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44066BC266F2479007C8753 /* SceneDelegate.swift */; };
 		E44066BF266F2479007C8753 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44066BE266F2479007C8753 /* LoginViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E43988C9267C8744004610EC /* UIFont+PreferredFontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+PreferredFontWeight.swift"; sourceTree = "<group>"; };
 		E44066B7266F2479007C8753 /* IssueTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44066BA266F2479007C8753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44066BC266F2479007C8753 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				E483FE1F2679BA4D0036DE49 /* Domain */,
 				E483FE202679BA6A0036DE49 /* Network */,
 				E44066C0266F2479007C8753 /* Main.storyboard */,
+				E43988C9267C8744004610EC /* UIFont+PreferredFontWeight.swift */,
 				E483FE262679D57B0036DE49 /* IssuesMockJSON.swift */,
 				E4C4E002267099860039807B /* Supporting Files */,
 			);
@@ -310,6 +313,7 @@
 				E44066BB266F2479007C8753 /* AppDelegate.swift in Sources */,
 				E44066BD266F2479007C8753 /* SceneDelegate.swift in Sources */,
 				E483FE2F2679E50D0036DE49 /* IssuesViewModel.swift in Sources */,
+				E43988CA267C8744004610EC /* UIFont+PreferredFontWeight.swift in Sources */,
 				E483FE35267A1C450036DE49 /* FilterSelectionViewModel.swift in Sources */,
 				E483FE1A267992C50036DE49 /* LandingTabBarController.swift in Sources */,
 				E483FE292679D75C0036DE49 /* Issue.swift in Sources */,
