@@ -1,8 +1,8 @@
 package com.bas.issuetracker.web.queries
 
 const val SAVE_USER: String = """
-insert into `user` (oauth_id, authenticated_by, nickname, name, profile_image, access_token)
-values (:oauth_id, :authenticated_by, :nickname, :name, :profile_image, :access_token);
+insert into `user` (oauth_id, authenticated_by, nickname, name, profile_image, email, access_token)
+values (:oauth_id, :authenticated_by, :nickname, :name, :profile_image, :email,:access_token);
 """
 
 const val FIND_USER_BY_AUTHENTICATED_BY_AND_OAUTH_ID: String = """
