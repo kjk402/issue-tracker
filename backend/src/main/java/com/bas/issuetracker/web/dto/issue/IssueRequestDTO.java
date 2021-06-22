@@ -1,8 +1,5 @@
 package com.bas.issuetracker.web.dto.issue;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class IssueRequestDTO {
@@ -11,13 +8,18 @@ public class IssueRequestDTO {
     private List<Integer> milestoneId;
     private List<Integer> labelIds;
     private List<Integer> assignedUserIds;
+    private List<Integer> imageIds;
 
-    public IssueRequestDTO(String title, String comment, List<Integer> milestoneId, List<Integer> labelIds, List<Integer> assignedUserIds) {
+    public IssueRequestDTO(String title, String comment, List<Integer> milestoneId, List<Integer> labelIds, List<Integer> assignedUserIds, List<Integer> imageIds) {
         this.title = title;
         this.comment = comment;
         this.milestoneId = milestoneId;
         this.labelIds = labelIds;
         this.assignedUserIds = assignedUserIds;
+        this.imageIds = imageIds;
+    }
+
+    protected IssueRequestDTO() {
     }
 
     public String getTitle() {
@@ -41,6 +43,10 @@ public class IssueRequestDTO {
 
     public List<Integer> getAssignedUserIds() {
         return assignedUserIds;
+    }
+
+    public List<Integer> getImageIds() {
+        return imageIds;
     }
 }
 

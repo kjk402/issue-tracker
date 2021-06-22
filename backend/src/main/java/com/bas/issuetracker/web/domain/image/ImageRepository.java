@@ -5,7 +5,9 @@ import java.util.List;
 public interface ImageRepository {
     Image create(Image image);
 
-    Image updateIssueId(Image image, int issueId);
+    Image updateIssue(Image image, int issueId);
 
     List<Image> findAllByIssueId(int issueId);
+
+    void updateIssueId(int imageId, int issueId);
 }

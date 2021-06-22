@@ -39,7 +39,7 @@ public class ImageDAO implements ImageRepository {
     }
 
     @Override
-    public Image updateIssueId(Image image, int issueId) {
+    public Image updateIssue(Image image, int issueId) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("image_url", image.getImageUrl())
                 .addValue("issue_id", image.getIssueId());
@@ -52,5 +52,13 @@ public class ImageDAO implements ImageRepository {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
                 .addValue("issue_id", issueId);
         return jdbcTemplate.query(FIND_IMAGES_BY_ISSUE_ID, mapSqlParameterSource, imageMapper);
+    }
+
+    @Override
+    public void updateIssueId(int imageId, int issueId) {
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()
+                .addValue("image_id", imageId)
+                .addValue("issue_id", issueId);
+        jdbcTemplate.update(UPDATE_ISSUE_ID, mapSqlParameterSource);
     }
 }

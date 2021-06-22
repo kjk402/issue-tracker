@@ -30,7 +30,7 @@ public class ImageService {
     }
 
     @Transactional
-    public void updateImage() {
-
+    public void updateImage(int imageId, int issueId) {
+        imageRepository.updateIssueId(imageId, issueId);
     }
 }
