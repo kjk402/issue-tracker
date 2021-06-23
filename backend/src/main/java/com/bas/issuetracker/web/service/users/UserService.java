@@ -5,6 +5,7 @@ import com.bas.issuetracker.web.domain.user.UserRepository;
 import com.bas.issuetracker.web.dto.UserWithToken;
 import com.bas.issuetracker.web.dto.issue.UserDTO;
 import com.bas.issuetracker.web.exceptions.notfound.UserNotFoundException;
+import com.bas.issuetracker.web.service.MailService;
 import com.bas.issuetracker.web.service.oauth.TokenService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,12 +22,14 @@ public class UserService {
     private final TokenService tokenService;
     private final UserDtoConverter userDtoConverter;
     private final UserDAO userDAO;
+    private final MailService mailService;
 
-    public UserService(UserRepository userRepository, TokenService tokenService, UserDtoConverter userDtoConverter, UserDAO userDAO) {
+    public UserService(UserRepository userRepository, TokenService tokenService, UserDtoConverter userDtoConverter, UserDAO userDAO, MailService mailService) {
         this.userRepository = userRepository;
         this.tokenService = tokenService;
         this.userDtoConverter = userDtoConverter;
         this.userDAO = userDAO;
+        this.mailService = mailService;
     }
 
     @Transactional
@@ -48,6 +51,8 @@ public class UserService {
             user = optionalUser.get();
         } else {
             save(user);
+            // user.getEmail();
+            mailService.mailSend(user.getEmail(), user.getNickname());
         }
         return user;
     }
