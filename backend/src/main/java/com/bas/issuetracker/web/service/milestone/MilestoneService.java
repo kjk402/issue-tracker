@@ -1,15 +1,16 @@
 package com.bas.issuetracker.web.service.milestone;
 
+import com.bas.issuetracker.web.dao.IssueDAO;
 import com.bas.issuetracker.web.domain.milestone.Milestone;
 import com.bas.issuetracker.web.domain.milestone.MilestoneRepository;
-import com.bas.issuetracker.web.dto.milestone.MilestoneInIssue;
-import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
-import com.bas.issuetracker.web.dto.milestone.MilestonePreviews;
+import com.bas.issuetracker.web.dto.issue.IssueInMilestone;
+import com.bas.issuetracker.web.dto.milestone.*;
 import com.bas.issuetracker.web.exceptions.IssueException;
 import com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.bas.issuetracker.web.exceptions.notfound.MilestoneNotFoundException.MILESTONE_NOT_FOUND;
@@ -21,11 +22,13 @@ public class MilestoneService {
     private final MilestoneRepository milestoneRepository;
     private final MilestoneDtoConverter milestoneDtoConverter;
     private final MilestoneDAO milestoneDAO;
+    private final IssueDAO issueDAO;
 
-    public MilestoneService(MilestoneRepository milestoneRepository, MilestoneDtoConverter milestoneDtoConverter, MilestoneDAO milestoneDAO) {
+    public MilestoneService(MilestoneRepository milestoneRepository, MilestoneDtoConverter milestoneDtoConverter, MilestoneDAO milestoneDAO, IssueDAO issueDAO) {
         this.milestoneRepository = milestoneRepository;
         this.milestoneDtoConverter = milestoneDtoConverter;
         this.milestoneDAO = milestoneDAO;
+        this.issueDAO = issueDAO;
     }
 
     @Transactional
@@ -41,9 +44,15 @@ public class MilestoneService {
                 .orElseThrow(() -> new MilestoneNotFoundException(MILESTONE_NOT_FOUND, milestoneId));
     }
 
-    public MilestonePreviews showMilestones() {
+    public MilestoneDetails showMilestones() {
         List<Milestone> milestones = milestoneRepository.findAll();
-        return milestoneDtoConverter.MilestonesToMilestonePreviews(milestones);
+        List<MilestoneDetail> milestoneDetails = new ArrayList<>();
+        for (Milestone milestone : milestones) {
+            List<IssueInMilestone> issues = issueDAO.findIssuesByMilestoneId(milestone.getId());
+            MilestoneDetail milestoneDetail = milestoneDtoConverter.MilestoneToMilestoneDetail(milestone, issues);
+            milestoneDetails.add(milestoneDetail);
+        }
+        return new MilestoneDetails(milestoneDetails);
     }
 
     @Transactional
