@@ -1,10 +1,7 @@
 package com.bas.issuetracker.web.controller;
 
 import com.bas.issuetracker.web.domain.milestone.Milestone;
-import com.bas.issuetracker.web.dto.milestone.MilestoneMetadata;
-import com.bas.issuetracker.web.dto.milestone.MilestonePreview;
-import com.bas.issuetracker.web.dto.milestone.MilestonePreviews;
-import com.bas.issuetracker.web.dto.milestone.MilestoneState;
+import com.bas.issuetracker.web.dto.milestone.*;
 import com.bas.issuetracker.web.service.milestone.MilestoneDtoConverter;
 import com.bas.issuetracker.web.service.milestone.MilestoneService;
 import io.swagger.annotations.Api;
@@ -35,7 +32,7 @@ public class MilestoneController {
 
     @GetMapping
     @ApiOperation(value = "마일스톤 목록조회", notes = "마일스톤을 목록을 조회합니다.")
-    public MilestonePreviews showMilestones() {
+    public MilestoneDetails showMilestones() {
         return milestoneService.showMilestones();
     }
 

@@ -1,9 +1,7 @@
 package com.bas.issuetracker.web.dao;
 
-import com.bas.issuetracker.web.dto.issue.IssueInfo;
-import com.bas.issuetracker.web.dto.issue.IssueDTO;
-import com.bas.issuetracker.web.dto.issue.IssueRequestDTO;
-import com.bas.issuetracker.web.dto.issue.UserDTO;
+import com.bas.issuetracker.web.domain.issue.Issue;
+import com.bas.issuetracker.web.dto.issue.*;
 import com.bas.issuetracker.web.dto.search.SearchFilter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -60,6 +58,19 @@ public class IssueDAO {
         query.append(FILTER_PART_END_OF_QUERY);
 
         return executeFindIssuesByFilterQuery(query.toString(), parameter);
+    }
+
+    public List<IssueInMilestone> findIssuesByMilestoneId(int milestoneId) {
+        List<IssueInMilestone> issueInMilestones = new ArrayList<>();
+        MapSqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue("milestone_id", milestoneId);
+        namedParameterJdbcTemplate.query(SEARCH_ISSUES_IN_MILESTONE, parameter, (rs, rowNum) ->
+                issueInMilestones.add(new IssueInMilestone(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getBoolean("is_open")
+                )));
+        return issueInMilestones;
     }
 
     private List<Integer> executeFindIssuesByFilterQuery(String query, MapSqlParameterSource parameter) {

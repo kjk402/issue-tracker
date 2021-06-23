@@ -61,3 +61,6 @@ INSERT INTO assigned (issue_id, user_id)
 VALUES (:issue_id, :user_id);    
 """
 
+const val SEARCH_ISSUES_IN_MILESTONE: String = """
+select i.id, i.title, i.is_open from issue i WHERE i.milestone_id = :milestone_id;
+"""
