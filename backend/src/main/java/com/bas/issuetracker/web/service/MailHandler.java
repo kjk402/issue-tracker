@@ -61,7 +61,6 @@ public class MailHandler {
         messageHelper.addInline(contentId, fsr);
     }
 
-
     // 발송
     public void send() {
         try {

@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Api(tags = {"Issue API"}, description = "이슈 API")
@@ -43,7 +44,7 @@ public class IssueController {
     @PostMapping
     @ApiOperation(value = "이슈 생성", notes = "새로운 이슈를 생성합니다.")
     public void makeIssue(
-            @ApiParam(required = false, hidden = true) @CertifiedUser int userId, @RequestBody IssueRequestDTO issueRequestDTO) {
+            @ApiParam(required = false, hidden = true) @CertifiedUser int userId, @RequestBody @Valid IssueRequestDTO issueRequestDTO) {
         issueService.createIssue(userId, issueRequestDTO);
     }
 
