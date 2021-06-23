@@ -21,6 +21,7 @@ create table `user`
     nickname         varchar(30),
     name             varchar(30),
     profile_image    varchar(300),
+    email            varchar(300),
     access_token     varchar(300)
 );
 

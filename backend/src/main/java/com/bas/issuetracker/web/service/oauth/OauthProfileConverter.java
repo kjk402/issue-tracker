@@ -16,6 +16,7 @@ public class OauthProfileConverter {
                 .name(githubProfile.getName())
                 .profileImage(githubProfile.getAvatarUrl())
                 .authenticatedBy(OAuthAuthenticater.GITHUB)
+                .email(githubProfile.getEmail())
                 .oauthId(githubProfile.getId())
                 .build();
     }

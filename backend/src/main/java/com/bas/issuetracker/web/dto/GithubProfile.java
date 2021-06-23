@@ -15,4 +15,5 @@ public class GithubProfile {
     private String login;
     private String name;
     private String avatarUrl;
+    private String email;
 }
