@@ -9,6 +9,7 @@ public class UserDtoConverter {
     public UserWithToken userToUserWithToken(User user) {
         return UserWithToken.builder()
                 .id(user.getId())
+                .email(user.getEmail())
                 .name(user.getName())
                 .nickname(user.getNickname())
                 .profileImage(user.getProfileImage())

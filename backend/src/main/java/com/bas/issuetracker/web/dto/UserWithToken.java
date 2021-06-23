@@ -12,5 +12,6 @@ public class UserWithToken {
     private String nickname;
     private String name;
     private String profileImage;
+    private String email;
     private String accessToken;
 }

@@ -201,3 +201,4 @@ $RECYCLE.BIN/
 /src/main/resources/dev_secret.properties
 /src/main/resources/secret.properties
 /src/main/resources/aws-config.properties
+/src/main/resources/google-mail.properties

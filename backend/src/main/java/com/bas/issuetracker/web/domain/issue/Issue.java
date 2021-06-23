@@ -2,9 +2,14 @@ package com.bas.issuetracker.web.domain.issue;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Data
+@Setter
 public class Issue {
     private int id;
     private String title;
@@ -22,6 +27,8 @@ public class Issue {
         this.milestoneId = milestoneId;
         this.lastModifiedDateTime = lastModifiedDateTime;
     }
+
+    public Issue(){}
 
     public int getId() {
         return id;

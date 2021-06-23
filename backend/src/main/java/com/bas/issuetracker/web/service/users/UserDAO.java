@@ -42,6 +42,7 @@ public class UserDAO implements UserRepository {
                 .addValue("profile_image", user.getProfileImage())
                 .addValue("access_token", user.getAccessToken())
                 .addValue("oauth_id", user.getOauthId())
+                .addValue("email", user.getEmail())
                 .addValue("authenticated_by", user.getAuthenticatedBy().name());
         jdbcTemplate.update(com.bas.issuetracker.web.queries.UserStatementKt.SAVE_USER, mapSqlParameterSource, keyHolder);
         user.updateId(Objects.requireNonNull(keyHolder.getKey()).intValue());

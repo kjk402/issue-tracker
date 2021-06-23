@@ -10,6 +10,7 @@ public class User {
     private String nickname;
     private String name;
     private String profileImage;
+    private String email;
     private String accessToken;
     private String oauthId;
     private OAuthAuthenticater authenticatedBy;
