@@ -67,9 +67,9 @@ public class MailService {
                     // 첨부 파일
 //            mailHandler.setAttach("stars", "static/stars.jpg");
                     // 이미지 삽입
-                    mailHandler.setInline("welcome", "static/welcome.jpg");
-                    mailHandler.setInline("swagger", "static/swagger.jpg");
-                    mailHandler.setInline("github", "static/github.jpg");
+                    mailHandler.setInline("welcome", "/static/welcome.jpg");
+                    mailHandler.setInline("swagger", "/static/swagger.jpg");
+                    mailHandler.setInline("github", "/static/github.jpg");
 
                     logger.info("{} 님에게 가입메일 전송 시작", nickname);
                     mailHandler.send();

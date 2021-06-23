@@ -52,6 +52,9 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.8.2'
 	implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:6.5.3')
 	implementation('org.elasticsearch:elasticsearch:6.5.3')
+
+	//IO
+	implementation 'commons-io:commons-io:2.10.0'
 }
 
 test {

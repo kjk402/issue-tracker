@@ -1,7 +1,10 @@
 package com.bas.issuetracker.web.service;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -10,6 +13,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Component
 public class MailHandler {
@@ -55,11 +59,13 @@ public class MailHandler {
 
     // 이미지 삽입
     public void setInline(String contentId, String pathToInline) throws MessagingException, IOException {
-        File file = new ClassPathResource(pathToInline).getFile();
-        FileSystemResource fsr = new FileSystemResource(file);
-
-        messageHelper.addInline(contentId, fsr);
+//        InputStream inputStream = new ClassPathResource(pathToInline).getInputStream();
+//        ByteArrayResource resource = new ByteArrayResource(IOUtils.toByteArray(inputStream));
+//        messageHelper.addInline(contentId, resource, "multipart/alternative");
+        Resource targetFileResource = new ClassPathResource(pathToInline);
+        messageHelper.addInline(contentId, targetFileResource);
     }
+
 
     // 발송
     public void send() {
