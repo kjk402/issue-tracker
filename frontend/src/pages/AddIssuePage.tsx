@@ -7,9 +7,12 @@ import Plus from '../components/common/icons/Plus';
 import Close from '../components/common/icons/Close';
 import Dropdown from 'components/common/Dropdown';
 
+import API from 'lib/API/API';
+
 const AddIssuePage = () => {
   const [lastPressedKey, setLastPressedKey] = useState<any>();
   const [accumulateLetters, setAccumulateLetters] = useState<any>([]);
+  const [title, setChangeTitle] = useState<string>();
   
   const [filterInfo, setFilterInfo] = useState<any>({});
   const $OutputTextBox = useRef<any>()
@@ -93,6 +96,37 @@ const AddIssuePage = () => {
     setLastPressedKey(pressedKey);
   }
 
+  const handleChangeTitle = ({target}) => {
+    setChangeTitle(target.value);
+  }
+  
+  const handleSubmitButton = async () => {
+    const initialData = {
+      "assignedUserIds": [],
+      "imageIds": [],
+      "labelIds": [],
+      "milestoneId": []
+    };
+    
+    let comment = "";
+    accumulateLetters.forEach((block) =>{
+      comment += block.contents + "\n"
+    });
+    const data = {
+      ...initialData,
+      "title": title,
+      "comment": comment
+    }
+    const response = await API.post.issues(data);
+    
+    console.log("submit response", response);
+    
+    if (response.ok) {
+      alert('ok');
+    }
+    
+  }
+
   if (Object.keys(filterInfo).length === 0) return <></>;
   return (
     <AddIssueLayout>
@@ -104,15 +138,9 @@ const AddIssuePage = () => {
       </ProfilePictureBlock>
       <ContentBlock>
         <InputLayer>
-          <TitleInput
-            type={"text"}
-            placeholder={"제목"}
-          />
+          <TitleInput type={"text"} placeholder={"제목"} onChange={handleChangeTitle} />
           <CommentLayer>
-            <CommentInput
-              placeholder={"코멘트를 입력하세요"}
-              onKeyDown={handleKeyDownEvent}
-            />
+            <CommentInput placeholder={"코멘트를 입력하세요"} onKeyDown={handleKeyDownEvent} />
             <CommentOutput ref={$OutputTextBox}/>
           </CommentLayer>
           <AddFileLayer>
@@ -136,9 +164,9 @@ const AddIssuePage = () => {
       </ContentBlock>
       <ButtonBlock>
         <CancelButton><Close/>작성 취소</CancelButton>
-        <Link to="/issues"> 
-          <UploadButton>완료</UploadButton> 
-        </Link>
+        {/* <Link to="/issues">  */}
+          <UploadButton onClick={handleSubmitButton}>완료</UploadButton> 
+        {/* </Link> */}
       </ButtonBlock>
     </AddIssueLayout>
   )

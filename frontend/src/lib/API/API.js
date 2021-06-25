@@ -12,6 +12,12 @@ const headerMaker = ({token}) => {
     },
   }
 }
+const bodyMaker = (data) => {
+  return {
+    method: 'POST',
+    body: JSON.stringify(data),
+  }
+}
 
 const API = {
   get: {
@@ -39,9 +45,28 @@ const API = {
         return response.json();
       });
       return result.milestones;
+    },
+    issuesDetail: async (id) => {
+      const result = await fetch(`${END_POINT}/issues/detail?issueId=${id}`, 
+        {...headerMaker({token: TOKEN.accessToken})}
+      ).then((response) => {
+        return response.json();
+      });
+      return result;
     }
   },
-  post: {},
+  post: {
+    issues: async (data) => {
+      const result = await fetch(`${END_POINT}/issues`, 
+        {
+          ...headerMaker({token: TOKEN.accessToken}),
+          ...bodyMaker(data)
+        }).then((response) => {
+          return response;
+        });
+      return result;
+    }
+  },
   patch: {},
   put: {},
   delete: {}

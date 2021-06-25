@@ -8,6 +8,7 @@ import SigninPage from 'pages/SigninPage';
 import OAuthCallbackPage from 'pages/OAuthCallbackPage';
 import IssueListPage from 'pages/IssueListPage';
 import AddIssuePage from 'pages/AddIssuePage';
+import IssueDetailPage from 'pages/IssueDetailPage';
 import LabelList from 'pages/LabelList';
 
 import Header from 'components/common/Header';
@@ -40,6 +41,7 @@ function App() {
         <Route path="/add/issue" component={AddIssuePage} />
         <Route path="/auth/github/callback" component={OAuthCallbackPage} />
         <Route path="/issues" component={IssueListPage} />
+        <Route path="/issue/:id" component={IssueDetailPage} />
         <Route path="/labels" component={LabelList} />
       </BrowserRouter>
     </>

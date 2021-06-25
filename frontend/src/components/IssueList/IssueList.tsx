@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Dropdown from 'components/common/Dropdown';
@@ -14,18 +15,11 @@ const IssueList = () => {
 
   useEffect(() => {
     const fetchIssues = async () => {
-      const result = await API.get.issues("is open");
+      const result = await API.get.issues("is:open");
       // console.log("fetchIssues", result);
       setIssues(result.issueList);
     }
     fetchIssues();
-
-    // const fetchUsers = async () => {
-    //   const result = 
-    //   // console.log("fetchUsers", result);
-    //   return result;
-    // }
-    // const userInfo = fetchUsers();
 
     const createFilterData = async () => {
       const result = FilterData;
@@ -40,7 +34,7 @@ const IssueList = () => {
     }
     createFilterData();
     
-  }, [])
+  }, []);
 
   if (issues.length === 0 || Object.keys(filterInfo).length === 0) return <></>;
   return (
@@ -63,21 +57,23 @@ const IssueList = () => {
 
       {issues.map((issue, i) => {
         return (
-          <IssueListContents key={`issue-${i}`}>
-            <IssueListCheckBoxLayer>
-              <input type="checkbox" />
-            </IssueListCheckBoxLayer>
-            <IssueListDetailInfomationLayer>
-              <DetailInformationTitleArea>
-                <DetailInformationTitle> {issue.issueDTO.issueInfo.title} </DetailInformationTitle>
-                <Label type={"DEFAULT"} value={"레이블 이름"} />
-              </DetailInformationTitleArea>
-              <DetailInformationContents>#{issue.issueDTO.issueInfo.issueId} </DetailInformationContents>
-            </IssueListDetailInfomationLayer>
-            <IssueListProfileLayer>
-              <ProfileImg src={issue.issueDTO.userDTO.profileImage} />
-            </IssueListProfileLayer>
-          </IssueListContents>
+          <Link to={`/issue/${issue.issueDTO.issueInfo.issueId}`} >
+            <IssueListContents key={`issue-${i}`}>
+              <IssueListCheckBoxLayer>
+                <input type="checkbox" />
+              </IssueListCheckBoxLayer>
+              <IssueListDetailInfomationLayer>
+                <DetailInformationTitleArea>
+                  <DetailInformationTitle> {issue.issueDTO.issueInfo.title} </DetailInformationTitle>
+                  <Label type={"DEFAULT"} value={"레이블 이름"} />
+                </DetailInformationTitleArea>
+                <DetailInformationContents>#{issue.issueDTO.issueInfo.issueId} </DetailInformationContents>
+              </IssueListDetailInfomationLayer>
+              <IssueListProfileLayer>
+                <ProfileImg src={issue.issueDTO.userDTO.profileImage} />
+              </IssueListProfileLayer>
+            </IssueListContents>
+          </Link>
         )
       })}
     </IssueListLayout>
