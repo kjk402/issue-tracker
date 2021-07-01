@@ -13,24 +13,27 @@
   - [Bat](https://github.com/kjk402)
   - [Nas](https://github.com/Malloc72P)
   
-### 개발 환경
+### Backend 개발 환경
 
 ![spring](https://user-images.githubusercontent.com/59398492/117413573-1ab1be00-af51-11eb-962a-876ec517474c.png)
 ![docker](https://user-images.githubusercontent.com/59398492/124055813-8bf88380-da5f-11eb-86aa-f78719bf9260.png)
 ![mysql](https://user-images.githubusercontent.com/59398492/114123158-b89f7200-992c-11eb-9392-e8823d075aa7.png)
 ![AWS](https://user-images.githubusercontent.com/59398492/114123162-b9380880-992c-11eb-9446-25729659d477.png)
 
+### Database ERD
+![image](https://user-images.githubusercontent.com/59398492/124091662-07bef400-da91-11eb-9b6b-d03de6ca08d3.png)
+
 ### Backend 기술 스택
 - Swagger (API 문서 자동화)
   ![image](https://user-images.githubusercontent.com/59398492/124055075-38396a80-da5e-11eb-88e0-acd6ad1150d5.png)
 
-- 관제 (관제 서버 구축하여 서버 다운 감지)
-![image](https://user-images.githubusercontent.com/59398492/124054342-c7de1980-da5c-11eb-8399-86d900051ea4.png)
-
 - 메일 서비스 (Oauth 로 GitHub 회원 가입 시 메일 전송 시스템 구현)
   ![image](https://user-images.githubusercontent.com/59398492/124054994-10e29d80-da5e-11eb-8806-7c585144ad6f.png)
+
+- 관제 (관제 서버 구축하여 서버 다운 감지)
+  ![image](https://user-images.githubusercontent.com/59398492/124054342-c7de1980-da5c-11eb-8399-86d900051ea4.png)
   
-- 그외 (JDBC Template, Oauth&JWT, Docker-Compose, Elastic Search, Kotlin(Query 관리))
+- 그외 (JDBC Template, [Oauth&JWT](https://github.com/kjk402/issue-tracker/wiki/%5BBE%5D-OAuth-%EB%A1%9C%EA%B7%B8%EC%9D%B8), Docker-Compose, Elastic Search, Kotlin(Query 관리))
 
 
 ## App, Web 동작 화면
