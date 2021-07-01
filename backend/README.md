@@ -33,7 +33,7 @@
 - 관제 (관제 서버 구축하여 서버 다운 감지)
   ![image](https://user-images.githubusercontent.com/59398492/124054342-c7de1980-da5c-11eb-8399-86d900051ea4.png)
   
-- 그외 (JDBC Template, [Oauth&JWT](https://github.com/kjk402/issue-tracker/wiki/%5BBE%5D-OAuth-%EB%A1%9C%EA%B7%B8%EC%9D%B8), Docker-Compose, Elastic Search, Kotlin(Query 관리))
+- 그외 (JDBC Template, [Oauth&JWT](https://github.com/kjk402/issue-tracker/wiki/%5BBE%5D-OAuth-%EB%A1%9C%EA%B7%B8%EC%9D%B8), Docker-Compose, Elastic Search, Kotlin(Query 관리), AWS(EC2, RDS, VPC, S3 이미지 업로드))
 
 
 ## App, Web 동작 화면
